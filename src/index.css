@@ -1,0 +1,35 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Swiper Slider */ 
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+
+.nav-link-underline {
+  position: relative; 
+}
+
+.nav-link-underline::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  left: 10px;
+  bottom: -4px;
+  background-color: theme('colors.yellow.400');
+  transition: width 0.3s ease-out;
+}
+
+.nav-link-underline:hover::after,
+.nav-link-underline.active::after {
+  width: 80%;
+}
+
+.nav-link-underline.active::after {
+  width: 85%;
+}
