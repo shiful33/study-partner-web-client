@@ -5,7 +5,7 @@ import { FaGraduationCap } from "react-icons/fa";
 const Footer = () => {
   return (
     <div>
-      <footer className="footer sm:footer-horizontal bg-[#001F46] p-10 px-20 mt-[80px] flex justify-between">
+      <footer className="footer sm:footer-horizontal bg-[#001F46] p-10 px-20 flex justify-between">
         <nav>
           <h6 className="text-white footer-title">Services</h6>
           <a className="text-white link link-hover hover:text-yellow-400">

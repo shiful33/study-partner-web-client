@@ -14,6 +14,7 @@ import FindPartners from './Pages/FindPartners.jsx';
 import { ToastContainer } from 'react-toastify';
 import Profile from './Pages/Profile.jsx';
 import Home from './Pages/Home.jsx';
+import PartnerDetails from './Components/PartnerDetails.jsx';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,11 @@ const router = createBrowserRouter([
       {
         path: "profile",
         element: <Profile />
+      },
+      {
+        path: "partnerDetails/:id",
+        Component: PartnerDetails,
+        loader: ({params}) => fetch(`http://localhost:3000/studies/${params.id}`)
       },
       {
         path: "login",
