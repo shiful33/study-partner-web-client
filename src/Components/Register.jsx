@@ -2,70 +2,99 @@ import React, { useContext, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../Context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
+import { updateProfile } from "firebase/auth";
+import { toast } from "react-toastify";
+import { FaEye } from "react-icons/fa";
+import { IoMdEyeOff } from "react-icons/io";
 
 const Register = () => {
+  const { createUser, signInWithGoogle, user, signOutUser } =
+    useContext(AuthContext);
 
-  const { createUser, signInWithGoogle, user, signOutUser } = useContext(AuthContext);
-
-  const [ registerError, setRegisterError ] = useState(' ');
-  const [ successMessage, setSuccessMessage ] = useState(' ');
-  const [ loading, setLoading ] = useState(false);
+  const [registerError, setRegisterError] = useState(" ");
+  const [successMessage, setSuccessMessage] = useState(" ");
+  const [loading, setLoading] = useState(false);
+  const [show, setShow] = useState(false);
 
   const navigate = useNavigate();
 
-        const handleRegister = async (e) => {
-          e.preventDefault();
-          setRegisterError('');
-          setSuccessMessage('');
-          setLoading(true);
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    setRegisterError("");
+    setSuccessMessage("");
+    setLoading(true);
 
-        const form = e.target;
-        const name = form.name.value;
-        const email = form.email.value;
-        const photo = form.photo.value;
-        const password = form.password.value;
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const photo = form.photo.value;
+    const password = form.password.value;
 
-        if (password.length < 6) {
-          setRegisterError('Password must be at least 6 characters long.');
-          setLoading(false);
-          return;
-        }
+    if (password.length < 6) {
+      setRegisterError("Password must be at least 6 characters long.");
+      setLoading(false);
+      return;
+    }
 
-        try {
-          const result = await createUser(email, password);
-          // const firebaseUser = result.user;
+    const regExp =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/;
 
-        const newUser = {
-          name: name,
-          email: email,
-          image: photo,
-        };        
-      
+    // console.log(regExp.test(password));
+
+    if (!regExp.test(password)) {
+      toast.error(
+        "The Password should be at least 8 characters long and include at least one uppercase letter, one lowercase latter, minimum one number, and one special character. "
+      );
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const result = await createUser(email, password);
+      const firebaseUser = result.user;
+
+      await updateProfile(firebaseUser, {
+        displayName: name,
+        photoURL: photo,
+      });
+
+      const newUser = {
+        name: name,
+        email: email,
+        image: photo,
+      };
+
       // create user in the database
       await fetch("http://localhost:3000/users", {
         method: "POST",
         headers: {
-          'content-type': 'application/json'
+          "content-type": "application/json",
         },
-        body: JSON.stringify(newUser)
+        body: JSON.stringify(newUser),
       });
-      
-      setSuccessMessage('Register successful! please login now.');
+
+      toast.success("Register successful! Please login now.", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+
       await signOutUser();
-      navigate('/login');
-      
-    }
-    catch (error) {
-      console.error(error);
+      navigate("/login");
+    } catch (error) {
+      toast.error(error);
       setRegisterError(error.message);
-    }
-    finally {
+    } finally {
       setLoading(false);
     }
   };
-  
-    const handleGoogleSignIn = async () => {
-    setRegisterError(' ');
+
+  const handleGoogleSignIn = async () => {
+    setRegisterError(" ");
     setLoading(true);
     try {
       const result = await signInWithGoogle();
@@ -80,69 +109,114 @@ const Register = () => {
       await fetch("http://localhost:3000/users", {
         method: "POST",
         headers: {
-          'content-type': 'application/json'
+          "content-type": "application/json",
         },
-        body: JSON.stringify(newUser)
+        body: JSON.stringify(newUser),
       });
-      
-      navigate('/login');
-      
-    }
-    catch (error) {
-      console.error(error);
+
+      navigate("/login");
+    } catch (error) {
+      toast.error(error);
       setRegisterError(error.message);
-    }
-    finally {
+    } finally {
       setLoading(false);
     }
   };
-  
-  
+
   return (
     <div>
-      <form onSubmit={handleRegister} className="w-full max-w-md mx-auto shadow-2xl card bg-base-100 shrink-0 mt-[80px]">
-        <h1 className="text-4xl font-bold text-[#001F46] text-shadow-light">Register now!</h1>
+      <form
+        onSubmit={handleRegister}
+        className="w-full max-w-md mx-auto shadow-2xl card bg-base-100 shrink-0 mt-[80px]"
+      >
+        <h1 className="text-4xl font-bold text-[#001F46] text-shadow-light">
+          Register now!
+        </h1>
         <div className="card-body">
           <fieldset className="fieldset">
-            
             {/* Name */}
             <label className="text-[16px] label">Name</label>
-            <input type="text" name="name" className="input w-[330px]" placeholder="Name" required />
+            <input
+              type="text"
+              name="name"
+              className="input w-[330px]"
+              placeholder="Name"
+              required
+            />
 
             {/* Email */}
             <label className="text-[16px] label">Email</label>
-            <input type="email" name="email" className="input w-[330px]" placeholder="Email" required />
+            <input
+              type="email"
+              name="email"
+              className="input w-[330px]"
+              placeholder="Email"
+              required
+            />
 
             {/* Photo URL */}
             <label className="text-[16px] label">Photo URL</label>
-            <input type="text" name="photo" className="input w-[330px]" placeholder="Photo URL" required />
-            
+            <input
+              type="text"
+              name="photo"
+              className="input w-[330px]"
+              placeholder="Photo URL"
+              required
+            />
+
             {/* Password */}
-            <label className="text-[16px] label">Password</label>
-            <input type="password"
-            name="password"
-            className="input w-[330px]" placeholder="**********" required />
+            <div className="relative">
+              <label className="label text-[16px] text-left">Password</label>
+            <input
+              type={show ? "text" : "password"}
+              name="password"
+              className="input w-[330px]"
+              placeholder="**********"
+              required
+            />
+
+            <span
+              onClick={() => setShow(!show)}
+              className="absolute text-[16px] right-8 top-9 cursor-pointer"
+            >
+              {show ? <FaEye /> : <IoMdEyeOff />}
+            </span>
+            </div>
 
             <div className="w-full mt-2 text-start">
               {registerError && <p className="text-red-500">{registerError}</p>}
-              {successMessage && <p className="text-green-500">{successMessage}</p>}
+              {successMessage && (
+                <p className="text-green-500">{successMessage}</p>
+              )}
             </div>
-            
+
             <div className="mt-2 text-start">
               <a className="link link-hover">Forgot password?</a>
             </div>
-            
-            <button type="submit" className="mt-4 btn bg-[#001F46] text-white text-[18px]" disabled={loading}>
-              {loading ? 'Processing...' : 'Register' }
+
+            <button
+              type="submit"
+              className="mt-4 btn bg-[#001F46] text-white text-[18px]"
+              disabled={loading}
+            >
+              {loading ? "Processing..." : "Register"}
             </button>
 
             <button
-            onClick={handleGoogleSignIn}
-            type="button"
-            className='mt-4 btn btn-outline bg-transparent text-[#001F46] bg-[#001F46]' disabled={loading}>
-              <FcGoogle className='text-[20px]'/> Register With Google</button>
-            
-            <Link to="/login" className="mt-4 font-semibold">Already have an account? Please <span className="font-semibold text-[17px] text-yellow-500 cursor-pointer hover:underline">Log In</span></Link>
+              onClick={handleGoogleSignIn}
+              type="button"
+              className="mt-4 btn btn-outline bg-transparent text-[#001F46] bg-[#001F46]"
+              disabled={loading}
+            >
+              <FcGoogle className="text-[20px]" /> Register With Google
+            </button>
+
+            <Link to="/login" className="mt-4 font-semibold">
+              Already have an account? Please{" "}
+              <span className="font-semibold text-[17px] text-yellow-500 cursor-pointer hover:underline">
+                LogIn
+              </span>
+            </Link>
           </fieldset>
         </div>
       </form>

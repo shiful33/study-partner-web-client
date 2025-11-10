@@ -1,17 +1,29 @@
-import React, { use, useEffect, useState } from "react";
-import { Link, NavLink } from "react-router";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import NavLogo from "../assets/NavLogo.png";
 import { AuthContext } from "../Context/AuthContext";
+import { toast } from "react-toastify";
+import { FaGraduationCap } from "react-icons/fa";
 
 const NavBar = () => {
-  const { user, signOutUser } = use(AuthContext);
+  const { user, signOutUser } = useContext(AuthContext);
   const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
 
   const handleSignOut = () => {
     signOutUser()
-    .then()
-    .catch()
-  }
+      .then(() => {
+        toast.success("Logout successful!", {
+          position: "top-right",
+          autoClose: 3000,
+        });
+
+        navigate('/');
+      })
+      .catch((error) => {
+        toast.error("Logout failed: " + error.message);
+      });
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,7 +47,9 @@ const NavBar = () => {
         <NavLink
           to="/"
           className={({ isActive }) =>
-            `text-shadow-light hover:text-base-100 font-semibold text-[17px] nav-link-underline ${isActive ? "text-white active" : "text-yellow-400"}`
+            `text-shadow-light hover:text-base-100 font-semibold text-[17px] nav-link-underline ${
+              isActive ? "text-white active" : "text-yellow-400"
+            }`
           }
         >
           Home
@@ -45,51 +59,45 @@ const NavBar = () => {
         <NavLink
           to="/findPartners"
           className={({ isActive }) =>
-            `text-shadow-light hover:text-base-100 font-semibold text-[17px] nav-link-underline ${isActive ? "text-white active" : "text-yellow-400"}`
+            `text-shadow-light hover:text-base-100 font-semibold text-[17px] nav-link-underline ${
+              isActive ? "text-white active" : "text-yellow-400"
+            }`
           }
         >
-          Find Partner
+          Find Partners
         </NavLink>
       </li>
 
       {/* Private Routs */}
-      {
-        user &&
+      {user && (
         <>
           <li>
-        <NavLink
-          to="/createPartnerProfile"
-          className={({ isActive }) =>
-            `text-shadow-light hover:text-base-100 font-semibold text-[17px] nav-link-underline ${isActive ? "text-white active" : "text-yellow-400"}`
-          }
-        >
-          Create Partner Profile
-        </NavLink>
-      </li>
+            <NavLink
+              to="/createPartnerProfile"
+              className={({ isActive }) =>
+                `text-shadow-light hover:text-base-100 font-semibold text-[17px] nav-link-underline ${
+                  isActive ? "text-white active" : "text-yellow-400"
+                }`
+              }
+            >
+              Create Partner Profile
+            </NavLink>
+          </li>
 
-      <li>
-        <NavLink
-          to="/findPartner"
-          className={({ isActive }) =>
-            `text-shadow-light hover:text-base-100 font-semibold text-[17px] nav-link-underline ${isActive ? "text-white active" : "text-yellow-400"}`
-          }
-        >
-          Find Partner
-        </NavLink>
-      </li>
-
-      <li>
-        <NavLink
-          to="/myConnection"
-          className={({ isActive }) =>
-            `text-shadow-light hover:text-base-100 font-semibold text-[17px] nav-link-underline ${isActive ? "text-white active" : "text-yellow-400"}`
-          }
-        >
-          My Connection
-        </NavLink>
-      </li>
+          <li>
+            <NavLink
+              to="/myConnection"
+              className={({ isActive }) =>
+                `text-shadow-light hover:text-base-100 font-semibold text-[17px] nav-link-underline ${
+                  isActive ? "text-white active" : "text-yellow-400"
+                }`
+              }
+            >
+              My Connection
+            </NavLink>
+          </li>
         </>
-      }
+      )}
     </>
   );
 
@@ -99,12 +107,12 @@ const NavBar = () => {
     navbar
     transition-all duration-300 ease-in-out
     ${scrolled ? "bg-transparent shadow-none" : `${defaultBgColor} `}
-`;
+    `;
 
   return (
     <div className="sticky top-0 z-50">
       <div className={navbarClasses}>
-        <div className="navbar-start">
+        <div className="navbar-start lg:pl-[40px]">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg
@@ -130,26 +138,62 @@ const NavBar = () => {
               {links}
             </ul>
           </div>
-          <a className="text-xl btn btn-ghost logo">
-            <img
-              src={NavLogo}
-              alt="Study Partner Logo"
-              className="w-auto h-10"
-            />
-            <span className="text-yellow-400 text-shadow-light">partners</span>
-          </a>
+            <span className="flex logo-text items-center gap-2 text-yellow-400 text-[30px]  text-shadow-light"><FaGraduationCap className="text-[70px] text-white text-shadow-light" /><span>Study</span>Mate</span>
         </div>
         <div className="hidden navbar-center lg:flex">
           <ul className="px-1 menu menu-horizontal">{links}</ul>
         </div>
-        <div className="flex gap-4 navbar-end">
-          {
-            user ?
-            <a onClick={handleSignOut} className="px-5 py-2 font-semibold text-white bg-yellow-400 rounded cursor-pointer btn-outline text-shadow-light">Log Out</a> : 
-            <Link to="login" className="px-5 py-2 font-semibold text-white bg-yellow-400 rounded cursor-pointer btn-outline text-shadow-light">
-            Login
-          </Link>
-          }
+        {/* User Image show with login */}
+        <div className="flex gap-4 navbar-end lg:pr-[40px]">
+          {user ? (
+            <div className="flex items-center space-x-3">
+              <div className="dropdown dropdown-end">
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className="btn btn-ghost btn-circle avatar"
+                >
+                  <div className="w-10 rounded-full">
+                    <img
+                      alt={user.displayName || "User Profile"}
+                      src={
+                        user.photoURL ||
+                        "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                      }
+                    />
+                  </div>
+                </div>
+                <ul
+                  tabIndex={0}
+                  className="p-2 mt-3 text-left shadow-lg menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+                >
+                  <li>
+                    <p className="font-bold">{user.displayName || "User"}</p>
+                  </li>
+                  <li>
+                    <Link 
+                    to="/profile" className="text-[15px] font-semibold text-[#001F46] tracking-[.05em]"
+                    >Profile</Link>
+                  </li>
+                  <li>
+                    <button
+                      onClick={handleSignOut}
+                      className="px-5 py-2 font-semibold text-[#001F46] hover:text-yellow-400 text-[15px] text-left bg-transparent rounded cursor-pointer btn bg-outline text-shadow-light"
+                    >
+                      Logout
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          ) : (
+            <Link
+              to="/login"
+              className="px-5 py-2 font-semibold text-white bg-yellow-400 rounded cursor-pointer btn-outline text-shadow-light"
+            >
+              Login
+            </Link>
+          )}
         </div>
       </div>
     </div>

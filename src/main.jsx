@@ -2,17 +2,18 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
-
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
 import RootLayout from './Components/Layouts/RootLayout.jsx';
-import Home from './Components/Home.jsx';
-import FindPartners from './Components/FindPartners.jsx';
 import AuthProvider from './Context/AuthProvider.jsx';
 import Register from './Components/Register.jsx';
 import Login from './Components/Login.jsx';
-import CreatePartnerProfile from './Components/CreatePartnerProfile.jsx';
-import MyConnection from './Components/MyConnection.jsx';
+import CreatePartnerProfile from './Pages/CreatePartnerProfile.jsx';
+import MyConnection from './Pages/MyConnection.jsx';
+import FindPartners from './Pages/FindPartners.jsx';
+import { ToastContainer } from 'react-toastify';
+import Profile from './Pages/Profile.jsx';
+import Home from './Pages/Home.jsx';
 
 const router = createBrowserRouter([
   {
@@ -24,20 +25,20 @@ const router = createBrowserRouter([
         Component: Home
       },
       {
-        path: "findPartner",
-        Components: FindPartners
+        path: "findPartners",
+        element: <FindPartners />
       },
       {
         path: "createPartnerProfile",
         element: <CreatePartnerProfile></CreatePartnerProfile>
       },
       {
-        path: "findPartner",
-        element: <FindPartners></FindPartners>
-      },
-      {
         path: "myConnection",
         element: <MyConnection></MyConnection>
+      },
+      {
+        path: "profile",
+        element: <Profile />
       },
       {
         path: "login",
@@ -56,5 +57,6 @@ createRoot(document.getElementById('root')).render(
     <AuthProvider>
       <RouterProvider router={router} />,
     </AuthProvider>
+    <ToastContainer />
   </StrictMode>,
 )

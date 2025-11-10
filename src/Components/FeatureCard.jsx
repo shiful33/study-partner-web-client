@@ -1,12 +1,13 @@
 import React from "react";
-import { FaGraduationCap, FaUser, FaBookOpen } from "react-icons/fa";
+import { FaUser, FaBookOpen } from "react-icons/fa";
+import { RiGraduationCapFill } from "react-icons/ri";
 
 const FeatureCards = () => {
   const features = [
     {
       title: "Group Study",
       description: "Group study shares knowledge, deepens understanding, and aids collaborative problem-solving to reach goals.",
-      icon: FaGraduationCap,
+      icon: RiGraduationCapFill,
     },
     {
       title: "Online Study",
