@@ -52,14 +52,14 @@ const HeroSlider = () => {
               
               <div className="relative z-10 max-w-2xl p-8 mx-auto text-center">
 
-                <h2 className="mb-4 text-[40px] font-bold leading-tight md:text-5xl">
+                <h2 className="mb-4 text-[40px] font-bold leading-tight md:text-5xl text-shadow-neon-yellow">
                   {slide.title}
                 </h2>
-                <p className="mb-8 text-lg font-medium md:text-xl opacity-90">
+                <p className="mb-8 text-lg font-medium md:text-xl opacity-90 text-shadow-light">
                   {slide.content}
                 </p>
                 
-                <button className="font-semibold text-white bg-transparent btn btn-lg hover:bg-yellow-400">
+                <button className="font-semibold text-white bg-transparent btn btn-lg hover:bg-yellow-400 text-shadow-light tracking-[.25em]">
                   Get Started
                 </button>
                 </div>

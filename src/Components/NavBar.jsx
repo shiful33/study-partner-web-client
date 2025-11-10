@@ -1,9 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router";
+import React, { use, useEffect, useState } from "react";
+import { Link, NavLink } from "react-router";
 import NavLogo from "../assets/NavLogo.png";
+import { AuthContext } from "../Context/AuthContext";
 
 const NavBar = () => {
+  const { user, signOutUser } = use(AuthContext);
   const [scrolled, setScrolled] = useState(false);
+
+  const handleSignOut = () => {
+    signOutUser()
+    .then()
+    .catch()
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,10 +34,9 @@ const NavBar = () => {
       <li>
         <NavLink
           to="/"
-          className={({ isActive }) => 
-                    `hover:text-base-100 font-semibold text-[17px] nav-link-underline 
-                     ${isActive ? 'text-white active' : 'text-yellow-400'}`
-                }
+          className={({ isActive }) =>
+            `text-shadow-light hover:text-base-100 font-semibold text-[17px] nav-link-underline ${isActive ? "text-white active" : "text-yellow-400"}`
+          }
         >
           Home
         </NavLink>
@@ -37,14 +44,52 @@ const NavBar = () => {
       <li>
         <NavLink
           to="/findPartners"
-          className={({ isActive }) => 
-                    `hover:text-base-100 font-semibold text-[17px] nav-link-underline 
-                     ${isActive ? 'text-white active' : 'text-yellow-400'}`
-                }
+          className={({ isActive }) =>
+            `text-shadow-light hover:text-base-100 font-semibold text-[17px] nav-link-underline ${isActive ? "text-white active" : "text-yellow-400"}`
+          }
         >
           Find Partner
         </NavLink>
       </li>
+
+      {/* Private Routs */}
+      {
+        user &&
+        <>
+          <li>
+        <NavLink
+          to="/createPartnerProfile"
+          className={({ isActive }) =>
+            `text-shadow-light hover:text-base-100 font-semibold text-[17px] nav-link-underline ${isActive ? "text-white active" : "text-yellow-400"}`
+          }
+        >
+          Create Partner Profile
+        </NavLink>
+      </li>
+
+      <li>
+        <NavLink
+          to="/findPartner"
+          className={({ isActive }) =>
+            `text-shadow-light hover:text-base-100 font-semibold text-[17px] nav-link-underline ${isActive ? "text-white active" : "text-yellow-400"}`
+          }
+        >
+          Find Partner
+        </NavLink>
+      </li>
+
+      <li>
+        <NavLink
+          to="/myConnection"
+          className={({ isActive }) =>
+            `text-shadow-light hover:text-base-100 font-semibold text-[17px] nav-link-underline ${isActive ? "text-white active" : "text-yellow-400"}`
+          }
+        >
+          My Connection
+        </NavLink>
+      </li>
+        </>
+      }
     </>
   );
 
@@ -91,16 +136,20 @@ const NavBar = () => {
               alt="Study Partner Logo"
               className="w-auto h-10"
             />
-            <span className="text-yellow-400">partners</span>
+            <span className="text-yellow-400 text-shadow-light">partners</span>
           </a>
         </div>
         <div className="hidden navbar-center lg:flex">
           <ul className="px-1 menu menu-horizontal">{links}</ul>
         </div>
-        <div className="navbar-end">
-          <a className="px-5 py-2 font-semibold text-white bg-yellow-400 rounded cursor-pointer btn-outline">
+        <div className="flex gap-4 navbar-end">
+          {
+            user ?
+            <a onClick={handleSignOut} className="px-5 py-2 font-semibold text-white bg-yellow-400 rounded cursor-pointer btn-outline text-shadow-light">Log Out</a> : 
+            <Link to="login" className="px-5 py-2 font-semibold text-white bg-yellow-400 rounded cursor-pointer btn-outline text-shadow-light">
             Login
-          </a>
+          </Link>
+          }
         </div>
       </div>
     </div>

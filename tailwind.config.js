@@ -7,27 +7,30 @@ export default {
   darkMode: "class",
 
   theme: {
-    extend: {},
+    extend: {
+      'custom-dark-blue': '#001F46',
+    },
   },
 
   plugins: [daisyui],
-
   daisyui: {
     themes: [
       // Light Config
       {
         light: {
           ...require("daisyui/src/theming/themes")["light"],
-          primary: "yellow",
-          secondary: "accent",
+          primary: "#001F46",
+          secondary: "yellow",
+          "base-content": "#001F46",
         },
       },
       // Dark Config
       {
         dark: {
           ...require("daisyui/src/theming/themes")["dark"],
-          primary: "orange",
-          secondary: "white",
+          primary: "yellow",
+          secondary: "#001F46",
+          "base-content": "white",
         },
       },
     ],
