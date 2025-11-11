@@ -6,6 +6,7 @@ import { updateProfile } from "firebase/auth";
 import { toast } from "react-toastify";
 import { FaEye } from "react-icons/fa";
 import { IoMdEyeOff } from "react-icons/io";
+import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 
 const Register = () => {
   const { createUser, signInWithGoogle, user, signOutUser } =
@@ -127,72 +128,72 @@ const Register = () => {
     <div>
       <form
         onSubmit={handleRegister}
-        className="w-full max-w-md mx-auto shadow-2xl card bg-base-100 shrink-0 mt-[80px]"
+        className="w-full md:max-w-md lg:max-w-lg mx-auto shadow-2xl card bg-base-100 shrink-0 my-[80px]"
       >
-        <h1 className="text-4xl font-bold text-[#001F46] text-shadow-light">
+        <h1 className="text-4xl font-bold text-[#001F46] text-shadow-light mt-6 text-center">
           Register now!
         </h1>
         <div className="card-body">
           <fieldset className="fieldset">
             {/* Name */}
-            <label className="text-[16px] label">Name</label>
+            <label className="text-[15px] text-[#001F46] font-semibold label">
+              Name
+            </label>
             <input
               type="text"
               name="name"
-              className="input w-[330px]"
+              className="input lg:w-[465px]"
               placeholder="Name"
               required
             />
 
             {/* Email */}
-            <label className="text-[16px] label">Email</label>
+            <label className="text-[15px] text-[#001F46] font-semibold label">
+              Email
+            </label>
             <input
               type="email"
               name="email"
-              className="input w-[330px]"
+              className="input lg:w-[465px]"
               placeholder="Email"
               required
             />
 
             {/* Photo URL */}
-            <label className="text-[16px] label">Photo URL</label>
+            <label className="text-[15px] text-[#001F46] font-semibold label">
+              Photo URL
+            </label>
             <input
               type="text"
               name="photo"
-              className="input w-[330px]"
+              className="input lg:w-[465px]"
               placeholder="Photo URL"
               required
             />
 
             {/* Password */}
             <div className="relative">
-              <label className="label text-[16px] text-left">Password</label>
-            <input
-              type={show ? "text" : "password"}
-              name="password"
-              className="input w-[330px]"
-              placeholder="**********"
-              required
-            />
+              <label className="text-[15px] text-[#001F46] font-semibold label mb-1">
+                Password
+              </label>
+              <br />
+              <input
+                type={show ? "text" : "password"}
+                name="password"
+                className="input lg:w-[465px]"
+                placeholder="**********"
+                required
+              />
 
-            <span
-              onClick={() => setShow(!show)}
-              className="absolute text-[16px] right-8 top-9 cursor-pointer"
-            >
-              {show ? <FaEye /> : <IoMdEyeOff />}
-            </span>
+              <span
+                onClick={() => setShow(!show)}
+                className="absolute text-[16px] right-8 top-9 cursor-pointer"
+              >
+                {show ? <FaEye /> : <IoMdEyeOff />}
+              </span>
             </div>
 
-            <div className="w-full mt-2 text-start">
-              {registerError && <p className="text-red-500">{registerError}</p>}
-              {successMessage && (
-                <p className="text-green-500">{successMessage}</p>
-              )}
-            </div>
-
-            <div className="mt-2 text-start">
-              <a className="link link-hover">Forgot password?</a>
-            </div>
+            
 
             <button
               type="submit"

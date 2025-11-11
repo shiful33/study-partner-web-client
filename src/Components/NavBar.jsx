@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import NavLogo from "../assets/NavLogo.png";
 import { AuthContext } from "../Context/AuthContext";
 import { toast } from "react-toastify";
 import { FaGraduationCap } from "react-icons/fa";
+import { FaPenClip } from "react-icons/fa6";
 
 const NavBar = () => {
   const { user, signOutUser } = useContext(AuthContext);
@@ -115,21 +115,6 @@ const NavBar = () => {
         <div className="navbar-start lg:pl-[40px]">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-5 h-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                {" "}
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />{" "}
-              </svg>
             </div>
             <ul
               tabIndex="-1"
@@ -138,7 +123,7 @@ const NavBar = () => {
               {links}
             </ul>
           </div>
-            <span className="flex logo-text items-center gap-2 text-yellow-400 text-[30px]  text-shadow-light"><FaGraduationCap className="text-[70px] text-white text-shadow-light" /><span>Study</span>Mate</span>
+            <span className="flex logo-text items-center gap-2 text-yellow-400 text-[30px]  text-shadow-light"><FaGraduationCap className="text-[70px] text-black text-shadow-light" />STUDYmate</span><FaPenClip className="text-yellow-400 text-[20px] ml-2 mt-[-25px]"/>
         </div>
         <div className="hidden navbar-center lg:flex">
           <ul className="px-1 menu menu-horizontal">{links}</ul>

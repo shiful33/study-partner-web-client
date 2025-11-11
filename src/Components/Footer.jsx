@@ -1,6 +1,5 @@
-import React from "react";
-import FooterLogo from "../assets/FooterLogo.png";
 import { FaGraduationCap } from "react-icons/fa";
+import { FaPenClip } from "react-icons/fa6";
 
 const Footer = () => {
   return (
@@ -90,7 +89,7 @@ const Footer = () => {
         <aside className="flex items-center justify-center">
           <div>
             <div className="flex items-center justify-left">
-            <span className="flex logo-text items-center gap-2 text-yellow-400 text-[24px]  text-shadow-light"><FaGraduationCap className="text-[50px] text-white text-shadow-light" /><span>Study</span>Mate</span>
+            <span className="flex logo-text items-center gap-2 text-yellow-400 text-[30px]  text-shadow-light"><FaGraduationCap className="text-[70px] text-white text-shadow-light" />STUDYmate</span><FaPenClip className="text-yellow-400 text-[20px] ml-2 mt-[-25px]"/>
           </div>
           <div className="text-start">
             <p className="mt-4">

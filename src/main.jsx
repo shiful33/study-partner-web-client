@@ -9,7 +9,9 @@ import Login from "./Components/Login.jsx";
 import MyConnection from "./Components/Pages/MyConnection.jsx";
 import { ToastContainer } from "react-toastify";
 import Home from "./Components/Pages/Home.jsx";
-import PartnerDetails from "./Components/AllStudyPartners/PartnerDetails.jsx";
+import PartnerDetails, {
+  ErrorBoundary,
+} from "./Components/AllStudyPartners/PartnerDetails.jsx";
 import Profile from "./Components/Pages/Profile.jsx";
 import CreatePartnerProfile from "./Components/Pages/CreatePartnerProfile.jsx";
 import FindPartners from "./Components/FindPartnerAll/FindPartners.jsx";
@@ -54,21 +56,11 @@ const router = createBrowserRouter([
             apiUrl = `http://localhost:3000/studies/${params.id}`;
           }
 
-          try {
-            const res = await fetch(apiUrl);
-            if (!res.ok) {
-              if (res.status === 404) {
-                throw new Response("Partner not found", { status: 404 });
-              }
-              throw new Error(`HTTP ${res.status}`);
-            }
-            return await res.json();
-          } catch (error) {
-            console.error("Loader error:", error);
-            throw error;
-          }
+          const res = await fetch(apiUrl);
+          if (!res.ok) throw new Response("Not found", { status: 404 });
+          return await res.json();
         },
-        errorElement: <PartnerDetails.ErrorBoundary />,
+        errorElement: <ErrorBoundary />
       },
       {
         path: "login",

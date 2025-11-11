@@ -1,14 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import { CgBorderStyleSolid } from "react-icons/cg";
 import { FaPhoneVolume } from "react-icons/fa";
 import { IoLocation } from "react-icons/io5";
 import { MdAttachEmail } from "react-icons/md";
 import { RxBorderSolid } from "react-icons/rx";
-import { useLoaderData } from "react-router";
+import { useLoaderData, useRouteError, isRouteErrorResponse } from "react-router-dom";
+import { toast } from "react-toastify";
+
+
 
 const PartnerDetails = () => {
+
   const partner = useLoaderData();
-  // console.log(partner);
+  console.log("Partner Data:", partner);
+  const [requestSent, setRequestSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleStudyRequest = async () => {
+    if (requestSent) return;
+    setLoading(true);
+
+    try {
+      const res = await fetch("http://localhost:3000/send-partner-request", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(partner),
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        toast.success("Study request sent!");
+        setRequestSent(true);
+      } else {
+        toast.info(data.message);
+      }
+    } catch {
+      toast.error("Failed to send request.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div>
@@ -111,9 +142,15 @@ const PartnerDetails = () => {
               </h4>
             </div>
 
-            <button className="border-2 border-yellow-400 bg-yellow-400/50 btn hover:bg-yellow-400 text-">
-              Study Request
-            </button>
+            <button
+          onClick={handleStudyRequest}
+          disabled={loading || requestSent}
+          className={`w-full btn mt-6 text-white font-bold transition-all ${
+            requestSent ? "bg-green-500 hover:bg-green-600" : "bg-yellow-400 hover:bg-yellow-500"
+          }`}
+        >
+          {loading ? "Sending..." : requestSent ? "Request Sent" : "Study Request"}
+        </button>
           </div>
         </div>
       </div>
@@ -128,10 +165,8 @@ export function ErrorBoundary() {
     if (error.status === 404) {
       return (
         <div className="py-20 text-center">
-          <h1 className="text-2xl font-bold text-red-600">
-            Partner Not Found!
-          </h1>
-          <p>The study partner you're looking for doesn't exist.</p>
+          <h1 className="text-2xl font-bold text-red-600">Partner Not Found!</h1>
+          <p>The study partner doesn't exist.</p>
         </div>
       );
     }
@@ -140,7 +175,6 @@ export function ErrorBoundary() {
   return (
     <div className="py-20 text-center">
       <h1 className="text-2xl font-bold text-red-600">Something went wrong!</h1>
-      <p>Failed to load partner details.</p>
     </div>
   );
 }
