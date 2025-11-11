@@ -44,7 +44,7 @@ const PartnerDetails = () => {
   return (
     <div>
       <div className="min-h-screen hero bg-base-200">
-        <div className="flex-col justify-center lg:gap-20 hero-content lg:flex-row">
+        <div className="flex-col justify-center lg:gap-20 hero-content lg:flex-row h-[380px]">
           <div>
             <img
               src={partner.profileimage}
@@ -149,7 +149,7 @@ const PartnerDetails = () => {
             requestSent ? "bg-green-500 hover:bg-green-600" : "bg-yellow-400 hover:bg-yellow-500"
           }`}
         >
-          {loading ? "Sending..." : requestSent ? "Request Sent" : "Study Request"}
+          {loading ? "Sending..." : requestSent ? "Request Sent" : "Send Partner Request"}
         </button>
           </div>
         </div>

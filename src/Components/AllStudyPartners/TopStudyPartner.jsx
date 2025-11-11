@@ -14,6 +14,7 @@ const TopStudyPartner = ({ topStudyPartnerPromise }) => {
             {
                 partners.map(partner => <Partner key={partner._id} partner={partner}></Partner>)
             }
+            
             </div>
         </div>
     );
