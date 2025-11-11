@@ -25,7 +25,7 @@ const Partner = ({ partner }) => {
           <p>Ratings: <span className=" text-[14px] text-purple-900 font-normal">{partner.rating}</span></p>
           
           <div className="justify-end card-actions">
-            <Link to={`/partnerDetails/${_id}`} className="w-full text-white bg-yellow-400 hover:bg-yellow-200 btn text-shadow-light">View Details</Link>
+            <Link to={`/partnerDetails/${_id}`} className="w-full text-white bg-yellow-400 hover:bg-yellow-200 btn text-shadow-light">View Profile</Link>
           </div>
         </div>
       </div>

@@ -1,11 +1,11 @@
 import React, { use } from 'react';
-import Partner from '../Components/Partner';
+import Partner from './Partner';
 import { GiTrophyCup } from 'react-icons/gi';
 
 const TopStudyPartner = ({ topStudyPartnerPromise }) => {
 
     const partners = use(topStudyPartnerPromise);
-    console.log(partners)
+    // console.log(partners)
 
     return (
         <div className='my-[80px]'>

@@ -8,7 +8,7 @@ import { useLoaderData } from "react-router";
 
 const PartnerDetails = () => {
   const partner = useLoaderData();
-  console.log(partner);
+  // console.log(partner);
 
   return (
     <div>
@@ -53,14 +53,7 @@ const PartnerDetails = () => {
             <div className="mt-4 border-yellow-200 border-1 w-50/100"></div>
 
             <div className="p-2 mt-4 bg-gray-200 shadow-md lg:w-[700px]">
-              <p className="py-6 text-[15px]">
-                <span className="font-semibold ">Descriptioon: </span>
-                Provident cupiditate voluptatem et in. Quaerat fugiat ut
-                assumenda excepturi exercitationem quasi. In deleniti eaque aut
-                repudiandae et a id nisi.
-              </p>
-
-              <h4 className="font-normal mt-[-10px] text-[16px]">
+              <h4 className="font-normal mt-4 text-[16px]">
                 Study Mode:
                 <span className="font-normal text-green-500 text-shadow-light">
                   {partner.studyMode}
@@ -80,9 +73,18 @@ const PartnerDetails = () => {
                 {partner.partnerCount}
                 </span>
               </h4>
+
+              <p className="my-4 text-[15px]">
+                <span className="font-semibold ">Descriptioon: </span>
+                Provident cupiditate voluptatem et in. Quaerat fugiat ut
+                assumenda excepturi exercitationem quasi. In deleniti eaque aut
+                repudiandae et a id nisi.
+              </p>
             </div>
 
-            <h4 className="flex items-center gap-2 mt-8 font-normal">
+            <div>
+              <h3 className="flex items-end pt-6 mt-4 text-xl font-semibold text-shadow-light">Contact Info<CgBorderStyleSolid className="font-extrabold text-[18px] text-yellow-400"/></h3>
+              <h4 className="flex items-center gap-2 mt-8 font-normal ">
                 <FaPhoneVolume className="text-[24px] text-green-500"/> 
                 <span className="font-normal text-[#001F46] text-shadow-light">
                 {partner.contactNumber}
@@ -102,6 +104,7 @@ const PartnerDetails = () => {
                 {partner.location}
                 </span>
               </h4>
+            </div>
 
             <button className="border-2 border-yellow-400 bg-yellow-400/50 btn hover:bg-yellow-400 text-">Study Request</button>
           </div>
