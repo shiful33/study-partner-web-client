@@ -16,16 +16,18 @@ const PartnerDetails = () => {
         <div className="flex-col justify-center lg:gap-20 hero-content lg:flex-row">
           <div>
             <img
-            src={partner.profileimage}
-            className="border-4 border-yellow-400 p-2 shadow-lg w-[300px] h-[300px] rounded-full object-cover opacity-100"
-          />
-          
-          <h1 className="text-[32px] font-bold text-[#001F46] text-shadow-light mt-6">
+              src={partner.profileimage}
+              className="border-4 border-yellow-400 p-2 shadow-lg w-[300px] h-[300px] rounded-full object-cover opacity-100"
+            />
+
+            <h1 className="text-[32px] text-center font-bold text-[#001F46] text-shadow-light mt-6">
               {partner.name}
             </h1>
           </div>
           <div className="p-6 text-left border-yellow-400 rounded-md shadow-md border-1">
-            <h1 className="flex items-end text-[22px] font-bold text-[#001F46] text-shadow-light">Name<CgBorderStyleSolid className="font-extrabold text-[18px] text-yellow-400"/> 
+            <h1 className="flex items-end text-[22px] font-bold text-[#001F46] text-shadow-light">
+              Name
+              <CgBorderStyleSolid className="font-extrabold text-[18px] text-yellow-400" />
               {partner.name}
             </h1>
 
@@ -61,16 +63,16 @@ const PartnerDetails = () => {
               </h4>
 
               <h4 className="font-normal">
-                Study Time: 
+                Study Time:
                 <span className="font-normal text-[#001F46] text-shadow-light">
-                {partner.availabilityTime}
+                  {partner.availabilityTime}
                 </span>
               </h4>
 
               <h4 className="font-normal">
-                Total Partner: 
+                Total Partner:
                 <span className="font-normal text-[#001F46] text-shadow-light">
-                {partner.partnerCount}
+                  {partner.partnerCount}
                 </span>
               </h4>
 
@@ -83,35 +85,64 @@ const PartnerDetails = () => {
             </div>
 
             <div>
-              <h3 className="flex items-end pt-6 mt-4 text-xl font-semibold text-shadow-light">Contact Info<CgBorderStyleSolid className="font-extrabold text-[18px] text-yellow-400"/></h3>
+              <h3 className="flex items-end pt-6 mt-4 text-xl font-semibold text-shadow-light">
+                Contact Info
+                <CgBorderStyleSolid className="font-extrabold text-[18px] text-yellow-400" />
+              </h3>
               <h4 className="flex items-center gap-2 mt-8 font-normal ">
-                <FaPhoneVolume className="text-[24px] text-green-500"/> 
+                <FaPhoneVolume className="text-[24px] text-green-500" />
                 <span className="font-normal text-[#001F46] text-shadow-light">
-                {partner.contactNumber}
+                  {partner.contactNumber}
                 </span>
               </h4>
 
               <h4 className="flex items-center gap-2 mt-4 font-normal">
-                <MdAttachEmail className="text-[24px] text-blue-500" /> 
+                <MdAttachEmail className="text-[24px] text-blue-500" />
                 <span className="font-normal text-[#001F46] text-shadow-light">
-                {partner.email}
+                  {partner.email}
                 </span>
               </h4>
 
               <h4 className="flex items-center gap-2 mt-4 mb-6 font-normal">
-                <IoLocation className="text-[24px] text-red-500" /> 
+                <IoLocation className="text-[24px] text-red-500" />
                 <span className="font-normal text-[#001F46] text-shadow-light">
-                {partner.location}
+                  {partner.location}
                 </span>
               </h4>
             </div>
 
-            <button className="border-2 border-yellow-400 bg-yellow-400/50 btn hover:bg-yellow-400 text-">Study Request</button>
+            <button className="border-2 border-yellow-400 bg-yellow-400/50 btn hover:bg-yellow-400 text-">
+              Study Request
+            </button>
           </div>
         </div>
       </div>
     </div>
   );
 };
+
+export function ErrorBoundary() {
+  const error = useRouteError();
+
+  if (isRouteErrorResponse(error)) {
+    if (error.status === 404) {
+      return (
+        <div className="py-20 text-center">
+          <h1 className="text-2xl font-bold text-red-600">
+            Partner Not Found!
+          </h1>
+          <p>The study partner you're looking for doesn't exist.</p>
+        </div>
+      );
+    }
+  }
+
+  return (
+    <div className="py-20 text-center">
+      <h1 className="text-2xl font-bold text-red-600">Something went wrong!</h1>
+      <p>Failed to load partner details.</p>
+    </div>
+  );
+}
 
 export default PartnerDetails;

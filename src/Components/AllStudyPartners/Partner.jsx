@@ -1,5 +1,4 @@
 import React from "react";
-import { RxBorderSolid } from "react-icons/rx";
 import { Link } from "react-router";
 
 const Partner = ({ partner }) => {
@@ -7,7 +6,7 @@ const Partner = ({ partner }) => {
 
   return (
     <div>
-      <div className="transition border-b shadow-lg hover:shadow-none border-amber-400 hover:border-none bg-yellow-50 card card-side">
+      <div className="p-4 transition border-b shadow-lg hover:shadow-none border-amber-400 hover:border-none bg-yellow-50 card card-side">
         <figure>
           <img
             src={partner.profileimage}
@@ -25,7 +24,7 @@ const Partner = ({ partner }) => {
           <p>Ratings: <span className=" text-[14px] text-purple-900 font-normal">{partner.rating}</span></p>
           
           <div className="justify-end card-actions">
-            <Link to={`/partnerDetails/${_id}`} className="w-full text-white bg-yellow-400 hover:bg-yellow-200 btn text-shadow-light">View Profile</Link>
+            <Link to={`/partnerDetails/${_id}?from=home`} className="w-full text-white bg-yellow-400 hover:bg-yellow-200 btn text-shadow-light">View Profile</Link>
           </div>
         </div>
       </div>

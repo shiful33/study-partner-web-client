@@ -1,68 +1,92 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
-import { createBrowserRouter } from "react-router";
-import { RouterProvider } from "react-router/dom";
-import RootLayout from './Components/Layouts/RootLayout.jsx';
-import AuthProvider from './Context/AuthProvider.jsx';
-import Register from './Components/Register.jsx';
-import Login from './Components/Login.jsx';
-import CreatePartnerProfile from './Pages/CreatePartnerProfile.jsx';
-import MyConnection from './Pages/MyConnection.jsx';
-import FindPartners from './Pages/FindPartners.jsx';
-import { ToastContainer } from 'react-toastify';
-import Profile from './Pages/Profile.jsx';
-import Home from './Pages/Home.jsx';
-import PartnerDetails from './Components/PartnerDetails.jsx';
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import RootLayout from "./Components/Layouts/RootLayout.jsx";
+import AuthProvider from "./Context/AuthProvider.jsx";
+import Register from "./Components/Register.jsx";
+import Login from "./Components/Login.jsx";
+import MyConnection from "./Components/Pages/MyConnection.jsx";
+import { ToastContainer } from "react-toastify";
+import Home from "./Components/Pages/Home.jsx";
+import PartnerDetails from "./Components/AllStudyPartners/PartnerDetails.jsx";
+import Profile from "./Components/Pages/Profile.jsx";
+import CreatePartnerProfile from "./Components/Pages/CreatePartnerProfile.jsx";
+import FindPartners from "./Components/FindPartnerAll/FindPartners.jsx";
+import FindPartnersData from "./Components/FindPartnerAll/FindPartnersData.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    Component: RootLayout,
+    element: <RootLayout />,
     children: [
       {
         index: true,
-        Component: Home
+        element: <Home />,
       },
       {
         path: "findPartners",
-        element: <FindPartners />
+        element: <FindPartners />,
       },
       {
         path: "createPartnerProfile",
-        element: <CreatePartnerProfile></CreatePartnerProfile>
+        element: <CreatePartnerProfile />,
       },
       {
         path: "myConnection",
-        element: <MyConnection></MyConnection>
+        element: <MyConnection />,
       },
       {
         path: "profile",
-        element: <Profile />
+        element: <Profile />,
       },
       {
         path: "partnerDetails/:id",
-        Component: PartnerDetails,
-        loader: ({params}) => fetch(`http://localhost:3000/studies/${params.id}`)
+        element: <PartnerDetails />,
+        loader: async ({ params, request }) => {
+          const url = new URL(request.url);
+          const from = url.searchParams.get("from");
+
+          let apiUrl = "";
+          if (from === "findPartners") {
+            apiUrl = `http://localhost:3000/find-partners/${params.id}`;
+          } else {
+            apiUrl = `http://localhost:3000/studies/${params.id}`;
+          }
+
+          try {
+            const res = await fetch(apiUrl);
+            if (!res.ok) {
+              if (res.status === 404) {
+                throw new Response("Partner not found", { status: 404 });
+              }
+              throw new Error(`HTTP ${res.status}`);
+            }
+            return await res.json();
+          } catch (error) {
+            console.error("Loader error:", error);
+            throw error;
+          }
+        },
+        errorElement: <PartnerDetails.ErrorBoundary />,
       },
       {
         path: "login",
-        Component: Login
+        element: <Login />,
       },
       {
         path: "register",
-        Component: Register
+        element: <Register />,
       },
-    ]
+    ],
   },
 ]);
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <StrictMode>
     <AuthProvider>
-      <RouterProvider router={router} />,
+      <RouterProvider router={router} />
     </AuthProvider>
     <ToastContainer />
-  </StrictMode>,
-)
+  </StrictMode>
+);

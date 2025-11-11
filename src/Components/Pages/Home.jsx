@@ -1,5 +1,5 @@
 import React from 'react';
-import TopStudyPartner from './TopStudyPartner';
+import TopStudyPartner from '../AllStudyPartners/TopStudyPartner';
 
 const topStudyPartnerPromise = fetch('http://localhost:3000/studies')
 .then(res => res.json());

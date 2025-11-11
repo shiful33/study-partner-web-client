@@ -19,7 +19,7 @@ const RootLayout = () => {
                 <FeatureCards />
                 </>
             )}
-            <main>
+            <main className='w-10/12 mx-auto'>
                 <Outlet />
             </main>
             <Footer />
