@@ -63,9 +63,9 @@ const TrustBadges = () => {
   
   return (
     <div>
-      <section className="py-12 bg-white border-t border-gray-200 dark:bg-gray-900 dark:border-gray-700">
+      <section className="py-12 border-gray-200 dark:bg">
       <div className="max-w-6xl px-4 mx-auto text-center">
-        <p className="mb-6 text-sm font-medium text-gray-500 dark:text-gray-400">
+        <p className="mb-6 text-sm font-medium text-gray-400 dark:text-gray-400">
           <span className="mr-1 text-lg font-bold text-green-500">✓</span>
           Trusted by 10,000+ students from
         </p>

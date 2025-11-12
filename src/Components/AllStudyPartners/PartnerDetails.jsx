@@ -43,7 +43,7 @@ const PartnerDetails = () => {
 
   return (
     <div>
-      <div className="min-h-screen hero bg-base-200">
+      <div className="min-h-screen hero">
         <div className="flex-col justify-center lg:gap-20 hero-content lg:flex-row h-[380px]">
           <div>
             <img
@@ -51,12 +51,12 @@ const PartnerDetails = () => {
               className="border-4 border-yellow-400 p-2 shadow-lg w-[300px] h-[300px] rounded-full object-cover opacity-100"
             />
 
-            <h1 className="text-[32px] text-center font-bold text-[#001F46] text-shadow-light mt-6">
+            <h1 className="text-[32px] text-center font-bold dark:text light:text text-shadow-light mt-6">
               {partner.name}
             </h1>
           </div>
           <div className="p-6 text-left border-yellow-400 rounded-md shadow-md border-1">
-            <h1 className="flex items-end text-[22px] font-bold text-[#001F46] text-shadow-light">
+            <h1 className="flex items-end text-[22px] font-bold  dark:text light:text text-shadow-light">
               Name
               <CgBorderStyleSolid className="font-extrabold text-[18px] text-yellow-400" />
               {partner.name}
@@ -85,30 +85,30 @@ const PartnerDetails = () => {
 
             <div className="mt-4 border-yellow-200 border-1 w-50/100"></div>
 
-            <div className="p-2 mt-4 bg-gray-200 shadow-md lg:w-[700px]">
-              <h4 className="font-normal mt-4 text-[16px]">
+            <div className="p-2 mt-4 shadow-md lg:w-[700px]">
+              <h4 className="font-normal mt-4 text-[16px] flex gap-1">
                 Study Mode:
                 <span className="font-normal text-green-500 text-shadow-light">
                   {partner.studyMode}
                 </span>
               </h4>
 
-              <h4 className="font-normal">
+              <h4 className="flex gap-1 font-normal">
                 Study Time:
-                <span className="font-normal text-[#001F46] text-shadow-light">
+                <span className="font-normal dark:text light:text text-shadow-light">
                   {partner.availabilityTime}
                 </span>
               </h4>
 
-              <h4 className="font-normal">
+              <h4 className="flex gap-1 font-normal">
                 Total Partner:
-                <span className="font-normal text-[#001F46] text-shadow-light">
+                <span className="font-normal dark:text light:text text-shadow-light">
                   {partner.partnerCount}
                 </span>
               </h4>
 
               <p className="my-4 text-[15px]">
-                <span className="font-semibold ">Descriptioon: </span>
+                <span className="font-semibold dark:text light:text">Descriptioon: </span>
                 Provident cupiditate voluptatem et in. Quaerat fugiat ut
                 assumenda excepturi exercitationem quasi. In deleniti eaque aut
                 repudiandae et a id nisi.
@@ -122,30 +122,31 @@ const PartnerDetails = () => {
               </h3>
               <h4 className="flex items-center gap-2 mt-8 font-normal ">
                 <FaPhoneVolume className="text-[24px] text-green-500" />
-                <span className="font-normal text-[#001F46] text-shadow-light">
+                <span className="font-normal dark:text light:text text-shadow-light">
                   {partner.contactNumber}
                 </span>
               </h4>
 
               <h4 className="flex items-center gap-2 mt-4 font-normal">
                 <MdAttachEmail className="text-[24px] text-blue-500" />
-                <span className="font-normal text-[#001F46] text-shadow-light">
+                <span className="font-normal dark:text light:text text-shadow-light">
                   {partner.email}
                 </span>
               </h4>
 
               <h4 className="flex items-center gap-2 mt-4 mb-6 font-normal">
                 <IoLocation className="text-[24px] text-red-500" />
-                <span className="font-normal text-[#001F46] text-shadow-light">
+                <span className="font-normal dark:text light:text text-shadow-light">
                   {partner.location}
                 </span>
               </h4>
             </div>
 
-            <button
+            <div className="flex gap-4">
+              <button
               onClick={handleStudyRequest}
               disabled={loading || requestSent}
-              className={`w-full btn mt-6 text-white font-bold transition-all ${
+              className={`w-[50%] btn mt-6 text-white font-bold transition-all ${
                 requestSent
                   ? "bg-green-500 hover:bg-green-600"
                   : "bg-yellow-400 hover:bg-yellow-500"
@@ -157,6 +158,23 @@ const PartnerDetails = () => {
                 ? "Request Sent"
                 : "Send Partner Request"}
             </button>
+            
+            <button
+              onClick={handleStudyMessage}
+              disabled={loading || requestSent}
+              className={`w-[50%] btn mt-6 text-white font-bold transition-all ${
+                requestSent
+                  ? "bg-green-500 hover:bg-green-600"
+                  : "bg-blue-500 hover:bg-blue-600"
+              }`}
+            >
+              {loading
+                ? "Sending..."
+                : requestSent
+                ? "Request Sent"
+                : "Send Partner Message"}
+            </button>
+            </div>
           </div>
         </div>
       </div>

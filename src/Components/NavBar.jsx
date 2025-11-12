@@ -123,7 +123,7 @@ const NavBar = () => {
               {links}
             </ul>
           </div>
-            <span className="flex logo-text items-center gap-2 text-yellow-400 text-[30px]  text-shadow-light"><FaGraduationCap className="text-[70px] text-black text-shadow-light" />STUDYmate</span><FaPenClip className="text-yellow-400 text-[20px] ml-2 mt-[-25px]"/>
+            <span className="flex logo-text items-center gap-2 text-yellow-400 text-[30px]  text-shadow-light"><FaGraduationCap className="text-[70px] light:text dark:text text-shadow-light" />STUDYmate</span><FaPenClip className="text-yellow-400 text-[20px] ml-2 mt-[-25px]"/>
         </div>
         <div className="hidden navbar-center lg:flex">
           <ul className="px-1 menu menu-horizontal">{links}</ul>

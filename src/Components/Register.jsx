@@ -193,8 +193,6 @@ const Register = () => {
               </span>
             </div>
 
-            
-
             <button
               type="submit"
               className="mt-4 btn bg-[#001F46] text-white text-[18px]"
@@ -212,7 +210,7 @@ const Register = () => {
               <FcGoogle className="text-[20px]" /> Register With Google
             </button>
 
-            <Link to="/login" className="mt-4 font-semibold">
+            <Link to="/login" className="mt-4 font-semibold text-center">
               Already have an account? Please{" "}
               <span className="font-semibold text-[17px] text-yellow-500 cursor-pointer hover:underline">
                 LogIn

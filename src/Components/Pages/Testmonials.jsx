@@ -57,13 +57,13 @@ const Testimonials = () => {
   }
 
   return (
-    <section className="py-20 overflow-hidden md:py-28 bg-gradient-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-900">
+    <section className="py-20 overflow-hidden md:py-28dark:from-gray-800 dark:to-gray-900">
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div className="mb-16 text-center" data-aos="fade-up">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#001F46] dark:text-white mb-4">
+          <h2 className="mb-4 text-3xl text-4xl font-bold light:text dark:text">
             What Students Are Saying
           </h2>
-          <p className="max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-300">
+          <p className="max-w-2xl mx-auto text-lg text-gray-400 dark:text-gray-300">
             Real stories from real students who found their <span className="text-yellow-500">perfect study buddy.</span>
           </p>
         </div>
@@ -150,7 +150,7 @@ const Testimonials = () => {
           data-aos="fade-up"
           data-aos-delay="300"
         >
-          <p className="mb-6 text-lg text-gray-600 dark:text-gray-300">
+          <p className="mb-6 text-lg text-gray-400 dark:text-gray-300">
             Ready to write your own success story?
           </p>
           <a

@@ -37,7 +37,7 @@ const StatsCount = () => {
 
   return (
     <div>
-      <section className="py-12 bg-[#001F46] text-white">
+      <section className="py-12 bg-[#001F46] shadow-lg text-white rounded">
         <div className="grid max-w-6xl gap-8 px-4 mx-auto text-center md:grid-cols-3">
           <div data-aos="fade-up">
             <h3 className="text-4xl font-bold md:text-5xl">

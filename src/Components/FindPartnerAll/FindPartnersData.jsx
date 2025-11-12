@@ -48,7 +48,7 @@ const FindPartnersData = ({ findPartnerPromise }) => {
   return (
     
     <div className="my-[80px]">
-      <h2 className="flex justify-center items-center gap-3 text-[26px] font-semibold text-shadow-light text-[#001F46] mb-[80px]">
+      <h2 className="flex justify-center items-center gap-3 text-[26px] font-semibold text-shadow-light light:text dark:text mb-[80px]">
         Find Study Partner{" "}
         <FaUserGraduate className="text-yellow-500 text-[40px]" />
       </h2>

@@ -9,7 +9,7 @@ const FindPartner = ({ partner }) => {
   
   return (
      <div className=''>
-          <div className="p-8 transition border-b shadow-lg hover:shadow-none border-amber-400 hover:border-none bg-yellow-50 card card-side">
+          <div className="p-8 transition bg-gray-100 shadow-1 lg border-1 hover:shadow-none border-amber-300 hover:border-none card card-side">
             <figure>
               <img
                 src={partner.profileimage}

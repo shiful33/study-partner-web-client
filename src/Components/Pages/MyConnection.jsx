@@ -62,9 +62,9 @@ const MyConnection = () => {
   }
 
   return (
-    <div className="min-h-screen py-10 bg-gray-50">
+    <div className="min-h-screen py-10">
       <div className="max-w-6xl px-4 mx-auto">
-        <h1 className="text-3xl font-bold text-center text-[#001F46] text-shadow-light mb-[80px]">
+        <h1 className="text-3xl font-bold text-center dark:text light:text text-shadow-light mb-[80px]">
           My Connections
         </h1>
 

@@ -9,13 +9,13 @@ const HowItWorks = () => {
   }, []);
 
   return (
-    <section className="py-16 transition-colors duration-300 md:py-24 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
+    <section className="py-16 transition-colors duration-300 md:py-24 dark:from-gray-900 dark:to-gray-800">
       <div className="px-4 mx-auto text-center max-w-7xl sm:px-6 lg:px-8">
         {/* Headline */}
-        <h2 className="text-3xl md:text-4xl font-bold text-[#001F46] dark:text-white mb-4 text-shadow-light">
+        <h2 className="mb-4 text-3xl font-bold md:text-4xl dark:text light-text text-shadow-light">
           How It Works
         </h2>
-        <p className="max-w-3xl mx-auto mb-12 text-lg text-gray-600 md:text-xl dark:text-gray-300">
+        <p className="max-w-3xl mx-auto mb-12 text-lg text-gray-400 md:text-xl dark:text-gray-300">
           Find your perfect study partner in just{" "}
           <span className="font-bold text-yellow-500">3 simple steps</span>.
         </p>

@@ -47,7 +47,7 @@ const CreatePartnerProfile = () => {
   };
 
   return (
-    <div className="min-h-screen py-20 bg-gray-50">
+    <div className="min-h-screen py-20">
       <div className="max-w-lg p-8 mx-auto bg-white border border-yellow-200 shadow-lg rounded-xl">
         <h1 className="text-[24px] font-bold text-center text-[#001F46] mb-6">
           Create Partner Profile

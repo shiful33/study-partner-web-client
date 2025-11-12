@@ -103,7 +103,7 @@ const Profile = () => {
 
   return (
     <div className="container px-4 py-12 mx-auto md:px-0">
-      <h1 className="text-3xl font-bold text-[#001F46] text-center mb-10 text-shadow-light">
+      <h1 className="mb-10 text-3xl font-bold text-center text-shadow-light dark:light dark:text">
         Your Profile Dashboard
       </h1>
 
