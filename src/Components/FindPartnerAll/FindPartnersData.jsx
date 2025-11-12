@@ -1,12 +1,15 @@
 import { use, useState } from "react";
 import FindPartner from "./FindPartner";
 import { FaUserGraduate } from "react-icons/fa";
+import LoadingSpinner from "../LoadingSpinner";
 
 const FindPartnersData = ({ findPartnerPromise }) => {
   const partners = use(findPartnerPromise);
-  
-  const [sortOrder, setSortOrder] = useState(""); 
+
+  const [sortOrder, setSortOrder] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
+
+  const [loading, setLoading] = useState(true);
 
   const handleSortChange = (e) => {
     const value = e.target.value;
@@ -35,10 +38,19 @@ const FindPartnersData = ({ findPartnerPromise }) => {
       return 0;
     });
 
+    setTimeout(() => setLoading(false), 2000);
+
+  if (loading) {
+    return <LoadingSpinner center message="Finding partners..." />;
+  }
+
+
   return (
+    
     <div className="my-[80px]">
       <h2 className="flex justify-center items-center gap-3 text-[26px] font-semibold text-shadow-light text-[#001F46] mb-[80px]">
-        Find Study Partner <FaUserGraduate className="text-yellow-500 text-[40px]" />
+        Find Study Partner{" "}
+        <FaUserGraduate className="text-yellow-500 text-[40px]" />
       </h2>
 
       {/* Search & Sort Section */}

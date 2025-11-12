@@ -1,30 +1,29 @@
-import React from 'react';
-import NavBar from '../NavBar';
-import { Outlet, useLocation } from 'react-router';
-import Footer from '../Footer';
-import HeroSlider from '../HeroSlider';
-import FeatureCards from '../FeatureCard';
+import React from "react";
+import NavBar from "../NavBar";
+import { Outlet, useLocation } from "react-router";
+import Footer from "../Footer";
+import HeroSlider from "../HeroSlider";
+import FeatureCards from "../FeatureCard";
 
 const RootLayout = () => {
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
 
-    const location = useLocation();
-    const isHomePage = location.pathname === '/';
-
-    return (
-        <div>
-            <NavBar />
-            {isHomePage && (
-                <>
-                <HeroSlider />
-                <FeatureCards />
-                </>
-            )}
-            <main className='w-10/12 mx-auto'>
-                <Outlet />
-            </main>
-            <Footer />
-        </div>
-    );
+  return (
+    <div>
+      <NavBar />
+      {isHomePage && (
+        <>
+          <HeroSlider />
+          <FeatureCards />
+        </>
+      )}
+      <main className="w-10/12 mx-auto">
+        <Outlet />
+      </main>
+      <Footer />
+    </div>
+  );
 };
 
 export default RootLayout;

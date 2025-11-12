@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
 const Partner = ({ partner }) => {
   const { _id, name, profileimage, subject, experienceLevel, rating } = partner;

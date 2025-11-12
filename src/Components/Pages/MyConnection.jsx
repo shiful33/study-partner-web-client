@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
+import LoadingSpinner from "../LoadingSpinner";
 
 const MyConnection = () => {
   const [connections, setConnections] = useState([]);
@@ -12,7 +14,7 @@ const MyConnection = () => {
 
   const fetchConnections = async () => {
     try {
-      const res = await fetch("http://localhost:3000/my-connections");
+      const res = await fetch("http://localhost:3000/myConnection");
       if (!res.ok) throw new Error("Failed to fetch");
       const data = await res.json();
       setConnections(data);
@@ -53,7 +55,11 @@ const MyConnection = () => {
     }
   };
 
-  if (loading) return <p className="py-10 text-center">Loading...</p>;
+  setTimeout(() => setLoading(false), 2000);
+
+  if (loading) {
+    return <LoadingSpinner center message="Finding My Connection..." />;
+  }
 
   return (
     <div className="min-h-screen py-10 bg-gray-50">
@@ -88,16 +94,27 @@ const MyConnection = () => {
                 <p className="mb-2 text-sm text-center text-gray-600">
                   Rating: {p.rating}
                 </p>
+                <p className="mb-2 text-sm text-center text-gray-600">
+                  Study Mode: {p.studyMode}
+                </p>
                 <p className="mb-4 text-sm text-center text-gray-600">
                   Location: {p.location}
                 </p>
 
-                <button
-                  onClick={() => handleDelete(p._id)}
-                  className="w-full font-bold transition-all bg-transparent shadow-lg btn border-yellow-200 btn-sm bg-outline hover:shadow-none text-[#011F46]"
-                >
-                  Remove Partner
-                </button>
+                <div className="flex items-center justify-center gap-4">
+                  <button
+                    onClick={() => handleDelete(p._id)}
+                    className="btn font-bold transition-all bg-transparent shadow-lg border-yellow-200 btn-sm bg-outline hover:shadow-none text-[#011F46] "
+                  >
+                    Remove Partner
+                  </button>
+                  <Link
+                    to={`/update-partner/${p._id.toString()}`}
+                    className="btn font-bold transition-all bg-transparent shadow-lg border-yellow-200 btn-sm bg-outline hover:shadow-none text-[#011F46]"
+                  >
+                    Update Partner
+                  </Link>
+                </div>
               </div>
             ))}
           </div>

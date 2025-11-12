@@ -15,7 +15,10 @@ import PartnerDetails, {
 import Profile from "./Components/Pages/Profile.jsx";
 import CreatePartnerProfile from "./Components/Pages/CreatePartnerProfile.jsx";
 import FindPartners from "./Components/FindPartnerAll/FindPartners.jsx";
-import FindPartnersData from "./Components/FindPartnerAll/FindPartnersData.jsx";
+import UpdatePartner from "./Components/Pages/UpdatePartner.jsx";
+import UpdatePartnerError from "./Components/ErrorPage/UpdatePartnerError.jsx";
+import DarkModeToggle from "./Components/UI/DarkModeToggle.jsx";
+
 
 const router = createBrowserRouter([
   {
@@ -39,37 +42,36 @@ const router = createBrowserRouter([
         element: <MyConnection />,
       },
       {
-        path: "profile",
-        element: <Profile />,
+        path: "update-partner/:id",
+        element: <UpdatePartner />,
+        loader: async ({ params }) => {
+          const res = await fetch(
+            `http://localhost:3000/myConnection/${params.id}`
+          );
+          if (!res.ok) throw new Response("Partner not found", { status: 404 });
+          return await res.json();
+        },
+        errorElement: <UpdatePartnerError />,
       },
+      { path: "profile", element: <Profile /> },
       {
         path: "partnerDetails/:id",
         element: <PartnerDetails />,
         loader: async ({ params, request }) => {
           const url = new URL(request.url);
           const from = url.searchParams.get("from");
-
-          let apiUrl = "";
-          if (from === "findPartners") {
-            apiUrl = `http://localhost:3000/find-partners/${params.id}`;
-          } else {
-            apiUrl = `http://localhost:3000/studies/${params.id}`;
-          }
-
+          const apiUrl =
+            from === "findPartners"
+              ? `http://localhost:3000/find-partners/${params.id}`
+              : `http://localhost:3000/studies/${params.id}`;
           const res = await fetch(apiUrl);
           if (!res.ok) throw new Response("Not found", { status: 404 });
           return await res.json();
         },
-        errorElement: <ErrorBoundary />
+        errorElement: <ErrorBoundary />,
       },
-      {
-        path: "login",
-        element: <Login />,
-      },
-      {
-        path: "register",
-        element: <Register />,
-      },
+      { path: "login", element: <Login /> },
+      { path: "register", element: <Register /> },
     ],
   },
 ]);
@@ -77,8 +79,11 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <AuthProvider>
+      <div className="relative min-h-screen">
+      <DarkModeToggle />
       <RouterProvider router={router} />
+      <ToastContainer />
+      </div>
     </AuthProvider>
-    <ToastContainer />
   </StrictMode>
 );

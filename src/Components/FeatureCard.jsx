@@ -1,6 +1,7 @@
 import React from "react";
 import { FaUser, FaBookOpen } from "react-icons/fa";
 import { RiGraduationCapFill } from "react-icons/ri";
+import QuickSearch from "../Components/SearchSort/QuickSearch";
 
 const FeatureCards = () => {
   const features = [
@@ -22,6 +23,7 @@ const FeatureCards = () => {
   ];
 
   return (
+    <>
     <div className="relative z-20 max-w-6xl px-4 mx-auto mb-10 -mt-18">
       <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
         {features.map((feature, index) => (
@@ -40,6 +42,8 @@ const FeatureCards = () => {
         ))}
       </div>
     </div>
+    <QuickSearch />
+    </>
   );
 };
 

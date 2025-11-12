@@ -3,14 +3,14 @@ import { CgBorderStyleSolid } from "react-icons/cg";
 import { FaPhoneVolume } from "react-icons/fa";
 import { IoLocation } from "react-icons/io5";
 import { MdAttachEmail } from "react-icons/md";
-import { RxBorderSolid } from "react-icons/rx";
-import { useLoaderData, useRouteError, isRouteErrorResponse } from "react-router-dom";
+import {
+  useLoaderData,
+  useRouteError,
+  isRouteErrorResponse,
+} from "react-router-dom";
 import { toast } from "react-toastify";
 
-
-
 const PartnerDetails = () => {
-
   const partner = useLoaderData();
   console.log("Partner Data:", partner);
   const [requestSent, setRequestSent] = useState(false);
@@ -143,14 +143,20 @@ const PartnerDetails = () => {
             </div>
 
             <button
-          onClick={handleStudyRequest}
-          disabled={loading || requestSent}
-          className={`w-full btn mt-6 text-white font-bold transition-all ${
-            requestSent ? "bg-green-500 hover:bg-green-600" : "bg-yellow-400 hover:bg-yellow-500"
-          }`}
-        >
-          {loading ? "Sending..." : requestSent ? "Request Sent" : "Send Partner Request"}
-        </button>
+              onClick={handleStudyRequest}
+              disabled={loading || requestSent}
+              className={`w-full btn mt-6 text-white font-bold transition-all ${
+                requestSent
+                  ? "bg-green-500 hover:bg-green-600"
+                  : "bg-yellow-400 hover:bg-yellow-500"
+              }`}
+            >
+              {loading
+                ? "Sending..."
+                : requestSent
+                ? "Request Sent"
+                : "Send Partner Request"}
+            </button>
           </div>
         </div>
       </div>
@@ -165,7 +171,9 @@ export function ErrorBoundary() {
     if (error.status === 404) {
       return (
         <div className="py-20 text-center">
-          <h1 className="text-2xl font-bold text-red-600">Partner Not Found!</h1>
+          <h1 className="text-2xl font-bold text-red-600">
+            Partner Not Found!
+          </h1>
           <p>The study partner doesn't exist.</p>
         </div>
       );

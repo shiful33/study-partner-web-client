@@ -1,15 +1,35 @@
-import React from 'react';
-import TopStudyPartner from '../AllStudyPartners/TopStudyPartner';
+import React, { useState } from "react";
+import TopStudyPartner from "../AllStudyPartners/TopStudyPartner";
+import HowItWorks from "./HowItWorks";
+import Testimonials from "./Testmonials";
+import TrustBadges from "./TrustBadges";
+import StatsCount from "./StatsCount";
+import LoadingSpinner from "../LoadingSpinner";
 
-const topStudyPartnerPromise = fetch('http://localhost:3000/studies')
-.then(res => res.json());
+const topStudyPartnerPromise = fetch("http://localhost:3000/studies").then(
+  (res) => res.json()
+);
 
 const Home = () => {
-    return (
-        <div>
-            <TopStudyPartner topStudyPartnerPromise={topStudyPartnerPromise}></TopStudyPartner>
-        </div>
-    );
+  const [loading, setLoading] = useState(true);
+
+  setTimeout(() => setLoading(false), 2000);
+
+  if (loading) {
+    return <LoadingSpinner center message="Welcome to home..." />;
+  }
+
+  return (
+    <div>
+      <TopStudyPartner
+        topStudyPartnerPromise={topStudyPartnerPromise}
+      ></TopStudyPartner>
+      <HowItWorks />
+      <StatsCount />
+      <TrustBadges />
+      <Testimonials />
+    </div>
+  );
 };
 
 export default Home;
