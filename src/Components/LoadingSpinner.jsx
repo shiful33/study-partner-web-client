@@ -99,7 +99,16 @@ const LoadingSpinner = ({
     );
   }
 
-  return spinner;
+  return (
+    <div
+      className={`flex flex-col items-center justify-center ${
+        center ? "min-h-screen" : "h-full"
+      } p-8`}
+    >
+      <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-[#001F46] mb-4"></div>
+      <p className="text-lg font-medium text-gray-700">{message}</p>
+    </div>
+  );
 };
 
 export default LoadingSpinner;

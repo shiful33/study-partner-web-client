@@ -21,7 +21,7 @@ export default function DarkModeToggle() {
   return (
     <button
       onClick={toggleDarkMode}
-      className="fixed z-[1000] p-2 text-yellow-500 transition-transform bg-gray-200 rounded-full shadow-lg top-6 right-34 hover:scale-110 dark:bg-gray-700 cursor-pointer"
+      className="fixed z-[1000] p-2 text-yellow-500 transition-transform bg-gray-200 rounded-full shadow-lg top-4 lg:top-6 right-24 lg:right-34 hover:scale-110 dark:bg-gray-700 cursor-pointer hidden lg:block"
     >
       {darkMode ? <GoSun size={20} /> : <IoMoonSharp size={20} />}
     </button>

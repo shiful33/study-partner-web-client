@@ -22,7 +22,7 @@ const SearchPartner = () => {
               placeholder="Physics, Maths, English... etc."
               value={subject}
               onChange={(e) => setSubject(e.target.value)}
-              className="flex-1 input input-lg"
+              className="justify-center flex-1 p-3 mx-auto mb-4 lg:mx-0 lg:mb-0 input input-lg"
             />
             <button
               onClick={handleSearch}

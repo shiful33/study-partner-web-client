@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-
 import { toast } from "react-toastify";
 import { FaGraduationCap } from "react-icons/fa";
 import { FaPenClip } from "react-icons/fa6";
@@ -107,7 +106,7 @@ const NavBar = () => {
   const navbarClasses = `
     navbar
     transition-all duration-300 ease-in-out
-    ${scrolled ? "bg-transparent shadow-none" : `${defaultBgColor} `}
+    ${scrolled ? "bg-transparent shadow" : `${defaultBgColor} `}
     `;
 
   return (
@@ -118,17 +117,17 @@ const NavBar = () => {
             <div
               tabIndex={0}
               role="button"
-              className="btn btn-ghost lg:hidden"
+              className="mr-4 bg-gray-800 btn lg:hidden"
             ></div>
             <ul
               tabIndex="-1"
-              className="p-2 mt-3 shadow menu menu-sm dropdown-content bg-base-100 rounded-box z-1 w-52"
+              className="p-2 mt-3 bg-white shadow menu menu-sm dropdown-content rounded-box z-1 w-52"
             >
               {links}
             </ul>
           </div>
-          <span className="flex logo-text items-center gap-2 text-yellow-400 text-[30px]  text-shadow-light">
-            <FaGraduationCap className="text-[70px] light:text dark:text text-shadow-light" />
+          <span className="flex logo-text items-center gap-2 text-yellow-400 text-[22px] lg:text-[30px]  text-shadow-light">
+            <FaGraduationCap className="text-[45px] lg:text-[70px] light:text dark:text text-shadow-light" />
             STUDYmate
           </span>
           <FaPenClip className="text-yellow-400 text-[20px] ml-2 mt-[-25px]" />

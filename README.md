@@ -1,16 +1,90 @@
-# React + Vite
+# Study Partner – Find Your Perfect Study Buddy
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Live Site:** [https://study-partner-web-client-shiful33.netlify.app](https://study-partner-web-client-shiful33.netlify.app)  
+**Backend API:** [https://study-partner-web-server.vercel.app](https://study-partner-web-server.vercel.app)  
+**Client GitHub:** [github.com/shiful33/study-partner-web-client](https://github.com/shiful33/study-partner-web-client)  
+**Server GitHub:** [github.com/shiful33/study-partner-web-server](https://github.com/shiful33/study-partner-web-server)
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Project Overview
 
-## React Compiler
+**Study Partner** is a modern, responsive web application that connects students to find ideal study partners based on subject, study mode, location, and availability. Users can create profiles, browse partners, update details, and manage connections — all in a clean, intuitive interface.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| Layer        | Technology                          |
+|-------------|-------------------------------------|
+| **Frontend** | React.js, Vite, Tailwind CSS, DaisyUI |
+| **Backend**  | Node.js, Express.js, MongoDB        |
+| **Deploy**   | Netlify (Client), Vercel (Server)   |
+| **Others**   | React Router, Toastify, SweetAlert2 |
+
+---
+
+## Key Features
+
+- **Create Partner Profile** – Add name, subject, study mode, location, availability, rating, etc.
+
+- **Browse Partners** – View all available study partners with filters.
+
+- **My Connections** – View, update, and delete your created partners.
+
+- **Responsive Design** – Mobile-first, dark mode supported.
+
+- **Loading States** – Smooth UX with spinners and toast notifications.
+
+- **Error Handling** – Professional 404/500 error page with reload & home navigation.
+
+---
+
+## Project Structure
+
+
+---
+
+## API Endpoints (Backend)
+
+| Method | Endpoint                     | Description                     |
+|--------|-----------------------------|---------------------------------|
+| POST   | `/create-partner`           | Create new partner profile      |
+| GET    | `/myConnection`             | Fetch all connections           |
+| DELETE | `/delete-partner/:id`       | Remove a partner                |
+| GET    | `/update-partner/:id`       | Load partner for update         |
+| PUT    | `/update-partner/:id`       | Update partner details          |
+
+---
+
+## Deployment
+
+- **Frontend**: Deployed on **Netlify** with continuous deployment from GitHub.
+- **Backend**: Deployed on **Vercel** with MongoDB Atlas integration.
+- **Environment Variables**: Securely managed via platform dashboards.
+
+---
+
+## Project Structure
+study-partner-web-client/
+├── src/
+│   ├── Components/Pages/
+│   │   ├── CreatePartnerProfile.jsx
+│   │   ├── MyConnection.jsx
+│   │   └── ErrorPage.jsx
+│   ├── context/AuthContext.jsx
+│   └── main.jsx
+└── vite.config.js
+study-partner-web-server/
+├── index.js
+├── routes/
+└── .env
+
+## How to Run Locally
+
+### Client
+```bash
+git clone https://github.com/shiful33/study-partner-web-client.git
+cd study-partner-web-client
+npm install
+npm run dev

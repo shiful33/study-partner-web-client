@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import LoadingSpinner from "../LoadingSpinner";
 
 const CreatePartnerProfile = () => {
   const [formData, setFormData] = useState({
@@ -22,6 +21,7 @@ const CreatePartnerProfile = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -47,11 +47,6 @@ const CreatePartnerProfile = () => {
     }
   };
 
-  setTimeout(() => setLoading(false), 2000);
-
-  if (loading) {
-    return <LoadingSpinner center message="Create partners..." />;
-  }
 
   return (
     <div className="min-h-screen py-20">
