@@ -6,20 +6,24 @@ import LoadingSpinner from "../LoadingSpinner";
 const FindPartnersData = ({ findPartnerPromise }) => {
   const partners = use(findPartnerPromise);
 
-  const [sortOrder, setSortOrder] = useState("");
+  const [sortOrder, setSortOrder] = useState(""); // "advanced", "intermediate", "beginner"
   const [searchTerm, setSearchTerm] = useState("");
-
   const [loading, setLoading] = useState(true);
 
   const handleSortChange = (e) => {
     const value = e.target.value;
-    if (value === "High Rating") setSortOrder("high");
-    else if (value === "Low Rating") setSortOrder("low");
-    else setSortOrder("");
+    setSortOrder(value.toLowerCase());
   };
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value.toLowerCase());
+  };
+
+  // Define order priority
+  const levelOrder = {
+    advanced: 3,
+    intermediate: 2,
+    beginner: 1,
   };
 
   // Filter & Sort Logic
@@ -33,22 +37,29 @@ const FindPartnersData = ({ findPartnerPromise }) => {
       );
     })
     .sort((a, b) => {
-      if (sortOrder === "high") return b.rating - a.rating;
-      if (sortOrder === "low") return a.rating - b.rating;
+      const levelA = levelOrder[a.experienceLevel.toLowerCase()] || 0;
+      const levelB = levelOrder[b.experienceLevel.toLowerCase()] || 0;
+
+      if (sortOrder === "advanced") return levelB - levelA; // Advanced first
+      if (sortOrder === "intermediate") {
+        // Intermediate first, then Advanced, then Beginner
+        if (levelA === 2 && levelB !== 2) return -1;
+        if (levelB === 2 && levelA !== 2) return 1;
+        return levelB - levelA;
+      }
+      if (sortOrder === "beginner") return levelA - levelB; // Beginner first
       return 0;
     });
 
-    setTimeout(() => setLoading(false), 2000);
+  setTimeout(() => setLoading(false), 2000);
 
   if (loading) {
     return <LoadingSpinner center message="Finding partners..." />;
   }
 
-
   return (
-    
     <div className="my-[80px]">
-      <h2 className="flex justify-center items-center gap-3 text-[26px] font-semibold text-shadow-light light:text dark:text mb-[80px]">
+      <h2 className="flex justify-center items-center gap-3 text-[26px] font-semibold dark:light dark:text mb-[80px]">
         Find Study Partner{" "}
         <FaUserGraduate className="text-yellow-500 text-[40px]" />
       </h2>
@@ -77,25 +88,28 @@ const FindPartnersData = ({ findPartnerPromise }) => {
           />
         </label>
 
-        {/* Sort by Rating */}
+        {/* Sort by experienceLevel */}
         <div className="w-full sm:max-w-xs">
           <input
             type="text"
             className="w-full input input-bordered"
-            placeholder="Sort by Rating"
-            list="rating"
+            placeholder="Sort by Experience"
+            list="experience"
             onChange={handleSortChange}
             value={
-              sortOrder === "high"
-                ? "High Rating"
-                : sortOrder === "low"
-                ? "Low Rating"
+              sortOrder === "advanced"
+                ? "Advanced"
+                : sortOrder === "intermediate"
+                ? "Intermediate"
+                : sortOrder === "beginner"
+                ? "Beginner"
                 : ""
             }
           />
-          <datalist id="rating">
-            <option value="High Rating" />
-            <option value="Low Rating" />
+          <datalist id="experience">
+            <option value="Advanced" />
+            <option value="Intermediate" />
+            <option value="Beginner" />
           </datalist>
         </div>
       </div>

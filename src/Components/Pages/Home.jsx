@@ -5,6 +5,7 @@ import Testimonials from "./Testmonials";
 import TrustBadges from "./TrustBadges";
 import StatsCount from "./StatsCount";
 import LoadingSpinner from "../LoadingSpinner";
+import FAQSection from "../FAQSection";
 
 const topStudyPartnerPromise = fetch("http://localhost:3000/studies").then(
   (res) => res.json()
@@ -28,6 +29,7 @@ const Home = () => {
       <StatsCount />
       <TrustBadges />
       <Testimonials />
+      <FAQSection />
     </div>
   );
 };

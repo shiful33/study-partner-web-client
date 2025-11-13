@@ -57,38 +57,7 @@ const UpdatePartner = () => {
     }
   };
 
-  /* Loading Spinner */
-  /* const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        const res = await fetch('http://localhost:3000/studies');
-        
-        if (!res.ok) throw new Error('Failed to fetch studies');
-        
-        const data = await res.json();
-       
-      } catch (err) {
-        setError(err.message);
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
-
  
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        <LoadingSpinner message="Finding top study partners..." />
-      </div>
-    );
-  } */
  <LoadingSpinner center message="Loading Study Partner..." />
   
 

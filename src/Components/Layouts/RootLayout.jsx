@@ -4,6 +4,7 @@ import { Outlet, useLocation } from "react-router";
 import Footer from "../Footer";
 import HeroSlider from "../HeroSlider";
 import FeatureCards from "../FeatureCard";
+import Chatbot from "../Chatbot";
 
 const RootLayout = () => {
   const location = useLocation();
@@ -20,6 +21,7 @@ const RootLayout = () => {
       )}
       <main className="w-10/12 mx-auto">
         <Outlet />
+        <Chatbot />
       </main>
       <Footer />
     </div>
