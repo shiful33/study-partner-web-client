@@ -10,14 +10,12 @@ import {
 } from "firebase/auth";
 import AuthContext from "../../Context/AuthContext";
 
-
 const Profile = () => {
   const { user } = useContext(AuthContext);
 
   const [name, setName] = useState(user?.displayName || "");
   const [email, setEmail] = useState(user?.email || "");
   const [photo, setPhoto] = useState(user?.photoURL || "");
-
 
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -49,7 +47,6 @@ const Profile = () => {
 
     try {
       if (emailChanged || passwordChanged) {
-        
         if (!currentPassword) {
           toast.error(
             "Please enter your current password to change email or password."
@@ -109,11 +106,9 @@ const Profile = () => {
       </h1>
 
       <div className="flex-col items-center justify-center gap-10 lg:flex lg:flex-row">
-        
         {/* User Profile Info-Left */}
         <div className="p-6 bg-white border-t-2 border-yellow-400 rounded-lg shadow-xl lg:w-1/3 h-fit">
           <div className="flex flex-col items-center">
-            
             {/* Profile Image */}
             <div className="p-2 mb-4 overflow-hidden border-4 border-yellow-500 rounded-full shadow-lg h-50 w-50">
               <img

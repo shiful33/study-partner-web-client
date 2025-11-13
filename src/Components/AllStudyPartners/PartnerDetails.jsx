@@ -22,7 +22,7 @@ const PartnerDetails = () => {
     if (requestSent) return;
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:3000/send-partner-request", {
+      const res = await fetch("https://study-partner-web-server.vercel.app/send-partner-request", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(partner),
@@ -48,7 +48,7 @@ const PartnerDetails = () => {
     }
     setSending(true);
     try {
-      const res = await fetch("http://localhost:3000/send-partner-message", {
+      const res = await fetch("https://study-partner-web-server.vercel.app/send-partner-message", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

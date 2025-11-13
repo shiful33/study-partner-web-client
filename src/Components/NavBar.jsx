@@ -19,7 +19,7 @@ const NavBar = () => {
           autoClose: 3000,
         });
 
-        navigate('/');
+        navigate("/");
       })
       .catch((error) => {
         toast.error("Logout failed: " + error.message);
@@ -115,8 +115,11 @@ const NavBar = () => {
       <div className={navbarClasses}>
         <div className="navbar-start lg:pl-[40px]">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-            </div>
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost lg:hidden"
+            ></div>
             <ul
               tabIndex="-1"
               className="p-2 mt-3 shadow menu menu-sm dropdown-content bg-base-100 rounded-box z-1 w-52"
@@ -124,7 +127,11 @@ const NavBar = () => {
               {links}
             </ul>
           </div>
-            <span className="flex logo-text items-center gap-2 text-yellow-400 text-[30px]  text-shadow-light"><FaGraduationCap className="text-[70px] light:text dark:text text-shadow-light" />STUDYmate</span><FaPenClip className="text-yellow-400 text-[20px] ml-2 mt-[-25px]"/>
+          <span className="flex logo-text items-center gap-2 text-yellow-400 text-[30px]  text-shadow-light">
+            <FaGraduationCap className="text-[70px] light:text dark:text text-shadow-light" />
+            STUDYmate
+          </span>
+          <FaPenClip className="text-yellow-400 text-[20px] ml-2 mt-[-25px]" />
         </div>
         <div className="hidden navbar-center lg:flex">
           <ul className="px-1 menu menu-horizontal">{links}</ul>
@@ -157,9 +164,12 @@ const NavBar = () => {
                     <p className="font-bold">{user.displayName || "User"}</p>
                   </li>
                   <li>
-                    <Link 
-                    to="/profile" className="text-[15px] font-semibold text-[#001F46] tracking-[.05em]"
-                    >Profile</Link>
+                    <Link
+                      to="/profile"
+                      className="text-[15px] font-semibold text-[#001F46] tracking-[.05em]"
+                    >
+                      Profile
+                    </Link>
                   </li>
                   <li>
                     <button

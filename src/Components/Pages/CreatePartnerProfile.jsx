@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import LoadingSpinner from "../LoadingSpinner";
 
 const CreatePartnerProfile = () => {
   const [formData, setFormData] = useState({
@@ -29,7 +30,7 @@ const CreatePartnerProfile = () => {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:3000/create-partner", {
+      const response = await fetch("https://study-partner-web-server.vercel.app/create-partner", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -46,6 +47,12 @@ const CreatePartnerProfile = () => {
     }
   };
 
+  setTimeout(() => setLoading(false), 2000);
+
+  if (loading) {
+    return <LoadingSpinner center message="Create partners..." />;
+  }
+
   return (
     <div className="min-h-screen py-20">
       <div className="max-w-lg p-8 mx-auto bg-white border border-yellow-200 shadow-lg rounded-xl">
@@ -56,7 +63,9 @@ const CreatePartnerProfile = () => {
         <form onSubmit={handleSubmit}>
           {/* Name */}
           <div className="mb-4">
-            <label className="block mb-2 text-sm font-medium text-gray-700">Name</label>
+            <label className="block mb-2 text-sm font-medium text-gray-700">
+              Name
+            </label>
             <input
               type="text"
               name="name"
@@ -69,7 +78,9 @@ const CreatePartnerProfile = () => {
 
           {/* Profile Image URL */}
           <div className="mb-4">
-            <label className="block mb-2 text-sm font-medium text-gray-700">Profile Image URL</label>
+            <label className="block mb-2 text-sm font-medium text-gray-700">
+              Profile Image URL
+            </label>
             <input
               type="url"
               name="profileimage"
@@ -82,7 +93,9 @@ const CreatePartnerProfile = () => {
 
           {/* Subject */}
           <div className="mb-4">
-            <label className="block mb-2 text-sm font-medium text-gray-700">Subject</label>
+            <label className="block mb-2 text-sm font-medium text-gray-700">
+              Subject
+            </label>
             <input
               type="text"
               name="subject"
@@ -95,7 +108,9 @@ const CreatePartnerProfile = () => {
 
           {/* Study Mode */}
           <div className="mb-4">
-            <label className="block mb-2 text-sm font-medium text-gray-700">Study Mode</label>
+            <label className="block mb-2 text-sm font-medium text-gray-700">
+              Study Mode
+            </label>
             <select
               name="studyMode"
               value={formData.studyMode}
@@ -112,7 +127,9 @@ const CreatePartnerProfile = () => {
 
           {/* Availability Time */}
           <div className="mb-4">
-            <label className="block mb-2 text-sm font-medium text-gray-700">Availability Time</label>
+            <label className="block mb-2 text-sm font-medium text-gray-700">
+              Availability Time
+            </label>
             <input
               type="text"
               name="availabilityTime"
@@ -126,7 +143,9 @@ const CreatePartnerProfile = () => {
 
           {/* Location */}
           <div className="mb-4">
-            <label className="block mb-2 text-sm font-medium text-gray-700">Location</label>
+            <label className="block mb-2 text-sm font-medium text-gray-700">
+              Location
+            </label>
             <input
               type="text"
               name="location"
@@ -140,7 +159,9 @@ const CreatePartnerProfile = () => {
 
           {/* Experience Level */}
           <div className="mb-4">
-            <label className="block mb-2 text-sm font-medium text-gray-700">Experience Level</label>
+            <label className="block mb-2 text-sm font-medium text-gray-700">
+              Experience Level
+            </label>
             <select
               name="experienceLevel"
               value={formData.experienceLevel}
@@ -157,7 +178,9 @@ const CreatePartnerProfile = () => {
 
           {/* Rating */}
           <div className="mb-4">
-            <label className="block mb-2 text-sm font-medium text-gray-700">Initial Rating</label>
+            <label className="block mb-2 text-sm font-medium text-gray-700">
+              Initial Rating
+            </label>
             <input
               type="number"
               name="rating"
@@ -173,7 +196,9 @@ const CreatePartnerProfile = () => {
 
           {/* Partner Count */}
           <div className="mb-4">
-            <label className="block mb-2 text-sm font-medium text-gray-700">Partner Count</label>
+            <label className="block mb-2 text-sm font-medium text-gray-700">
+              Partner Count
+            </label>
             <input
               type="number"
               name="partnerCount"
@@ -187,7 +212,9 @@ const CreatePartnerProfile = () => {
 
           {/* Contact Number */}
           <div className="mb-4">
-            <label className="block mb-2 text-sm font-medium text-gray-700">Contact Number</label>
+            <label className="block mb-2 text-sm font-medium text-gray-700">
+              Contact Number
+            </label>
             <input
               type="tel"
               name="contactNumber"
@@ -201,7 +228,9 @@ const CreatePartnerProfile = () => {
 
           {/* Email */}
           <div className="mb-6">
-            <label className="block mb-2 text-sm font-medium text-gray-700">Email</label>
+            <label className="block mb-2 text-sm font-medium text-gray-700">
+              Email
+            </label>
             <input
               type="email"
               name="email"

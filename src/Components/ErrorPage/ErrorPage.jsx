@@ -5,7 +5,8 @@ import { AlertCircle, Home, RefreshCw } from "lucide-react";
 const ErrorPage = () => {
   const error = useRouteError();
   const status = error?.status || 500;
-  const message = error?.statusText || error?.message || "Something went wrong!";
+  const message =
+    error?.statusText || error?.message || "Something went wrong!";
 
   return (
     <div className="flex items-center justify-center min-h-screen p-4 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
@@ -51,7 +52,10 @@ const ErrorPage = () => {
         {/* Footer */}
         <p className="mt-8 text-xs text-gray-400">
           Study Partner © 2025 | Need help?{" "}
-          <a href="mailto:support@study.com" className="text-blue-500 hover:underline">
+          <a
+            href="mailto:support@study.com"
+            className="text-blue-500 hover:underline"
+          >
             Contact Support
           </a>
         </p>

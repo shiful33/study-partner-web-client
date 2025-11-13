@@ -5,8 +5,7 @@ import LoadingSpinner from "../LoadingSpinner";
 
 const FindPartnersData = ({ findPartnerPromise }) => {
   const partners = use(findPartnerPromise);
-
-  const [sortOrder, setSortOrder] = useState(""); // "advanced", "intermediate", "beginner"
+  const [sortOrder, setSortOrder] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(true);
 
@@ -19,14 +18,12 @@ const FindPartnersData = ({ findPartnerPromise }) => {
     setSearchTerm(e.target.value.toLowerCase());
   };
 
-  // Define order priority
   const levelOrder = {
     advanced: 3,
     intermediate: 2,
     beginner: 1,
   };
 
-  // Filter & Sort Logic
   const filteredAndSortedPartners = partners
     .filter((partner) => {
       const search = searchTerm.toLowerCase();
@@ -40,14 +37,13 @@ const FindPartnersData = ({ findPartnerPromise }) => {
       const levelA = levelOrder[a.experienceLevel.toLowerCase()] || 0;
       const levelB = levelOrder[b.experienceLevel.toLowerCase()] || 0;
 
-      if (sortOrder === "advanced") return levelB - levelA; // Advanced first
+      if (sortOrder === "advanced") return levelB - levelA;
       if (sortOrder === "intermediate") {
-        // Intermediate first, then Advanced, then Beginner
         if (levelA === 2 && levelB !== 2) return -1;
         if (levelB === 2 && levelA !== 2) return 1;
         return levelB - levelA;
       }
-      if (sortOrder === "beginner") return levelA - levelB; // Beginner first
+      if (sortOrder === "beginner") return levelA - levelB;
       return 0;
     });
 

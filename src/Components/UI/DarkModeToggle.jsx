@@ -17,7 +17,7 @@ export default function DarkModeToggle() {
     localStorage.setItem("darkMode", newMode);
     document.documentElement.classList.toggle("dark", newMode);
   };
- console.log(darkMode)
+  console.log(darkMode);
   return (
     <button
       onClick={toggleDarkMode}

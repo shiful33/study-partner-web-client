@@ -20,7 +20,6 @@ import UpdatePartnerError from "./Components/ErrorPage/UpdatePartnerError.jsx";
 import DarkModeToggle from "./Components/UI/DarkModeToggle.jsx";
 import ErrorPage from "./Components/ErrorPage/ErrorPage.jsx";
 
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -47,7 +46,7 @@ const router = createBrowserRouter([
         element: <UpdatePartner />,
         loader: async ({ params }) => {
           const res = await fetch(
-            `http://localhost:3000/myConnection/${params.id}`
+            `https://study-partner-web-server.vercel.app/myConnection/${params.id}`
           );
           if (!res.ok) throw new Response("Partner not found", { status: 404 });
           return await res.json();
@@ -63,8 +62,8 @@ const router = createBrowserRouter([
           const from = url.searchParams.get("from");
           const apiUrl =
             from === "findPartners"
-              ? `http://localhost:3000/find-partners/${params.id}`
-              : `http://localhost:3000/studies/${params.id}`;
+              ? `https://study-partner-web-server.vercel.app/find-partners/${params.id}`
+              : `https://study-partner-web-server.vercel.app/studies/${params.id}`;
           const res = await fetch(apiUrl);
           if (!res.ok) throw new Response("Not found", { status: 404 });
           return await res.json();
@@ -82,9 +81,9 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <AuthProvider>
       <div className="relative min-h-screen">
-      <DarkModeToggle />
-      <RouterProvider router={router} />
-      <ToastContainer />
+        <DarkModeToggle />
+        <RouterProvider router={router} />
+        <ToastContainer />
       </div>
     </AuthProvider>
   </StrictMode>

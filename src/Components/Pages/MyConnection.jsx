@@ -11,7 +11,7 @@ const MyConnection = () => {
   const fetchConnections = async () => {
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:3000/myConnection");
+      const res = await fetch("https://study-partner-web-server.vercel.app/myConnection");
       console.log("Response status:", res.status);
 
       if (!res.ok) {
@@ -42,23 +42,25 @@ const MyConnection = () => {
 
   // DELETE PARTNER
   const handleDelete = (id) => {
-  Swal.fire({
-    title: "Delete?",
-    text: "Are You Sure?",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonText: "Yes Delete It",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      fetch(`http://localhost:3000/delete-partner/${id}`, { method: "DELETE" })
-        .then(() => {
-          toast.success("Delete Successful!");
-          fetchConnections();
+    Swal.fire({
+      title: "Delete?",
+      text: "Are You Sure?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes Delete It",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`https://study-partner-web-server.vercel.app/delete-partner/${id}`, {
+          method: "DELETE",
         })
-        .catch(() => toast.error("Failed"));
-    }
-  });
-};
+          .then(() => {
+            toast.success("Delete Successful!");
+            fetchConnections();
+          })
+          .catch(() => toast.error("Failed"));
+      }
+    });
+  };
 
   if (loading) {
     return <LoadingSpinner center message="Loading My Connections..." />;

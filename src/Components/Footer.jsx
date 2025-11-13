@@ -89,18 +89,25 @@ const Footer = () => {
         <aside className="flex items-center justify-center">
           <div>
             <div className="flex items-center justify-left">
-            <span className="flex logo-text items-center gap-2 text-yellow-400 text-[30px]  text-shadow-light"><FaGraduationCap className="text-[70px] text-white text-shadow-light" />STUDYmate</span><FaPenClip className="text-yellow-400 text-[20px] ml-2 mt-[-25px]"/>
-          </div>
-          <div className="text-start">
-            <p className="mt-4">
-            Study Partners Education Community
-            <br />
-            Providing programming tech student 2025.
-          </p>
-          </div>
+              <span className="flex logo-text items-center gap-2 text-yellow-400 text-[30px]  text-shadow-light">
+                <FaGraduationCap className="text-[70px] text-white text-shadow-light" />
+                STUDYmate
+              </span>
+              <FaPenClip className="text-yellow-400 text-[20px] ml-2 mt-[-25px]" />
+            </div>
+            <div className="text-start">
+              <p className="mt-4">
+                Study Partners Education Community
+                <br />
+                Providing programming tech student 2025.
+              </p>
+            </div>
           </div>
           <div>
-            <p className="ml-40 text-gray-400">Copyright © {new Date().getFullYear()} - All right reserved by | Shiful Islam</p>
+            <p className="ml-40 text-gray-400">
+              Copyright © {new Date().getFullYear()} - All right reserved by |
+              Shiful Islam
+            </p>
           </div>
         </aside>
       </footer>

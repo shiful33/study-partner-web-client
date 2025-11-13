@@ -20,14 +20,14 @@ const UpdatePartner = () => {
     setLoading(true);
 
     try {
-      const updateRes1 = await fetch("http://localhost:3000/update-partner", {
+      const updateRes1 = await fetch("https://study-partner-web-server.vercel.app/update-partner", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...formData, _id: partner._id }),
       });
 
       const updateRes2 = await fetch(
-        `http://localhost:3000/update-myConnection/${partner._id}`,
+        `https://study-partner-web-server.vercel.app/update-myConnection/${partner._id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -52,7 +52,7 @@ const UpdatePartner = () => {
   };
 
   if (!formData) {
-    return <LoadingSpinner center message="Loading Study Partner..." />;
+    return <LoadingSpinner center message="Update Partner..." />;
   }
 
   return (

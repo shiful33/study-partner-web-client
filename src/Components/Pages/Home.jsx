@@ -7,7 +7,7 @@ import StatsCount from "./StatsCount";
 import LoadingSpinner from "../LoadingSpinner";
 import FAQSection from "../FAQSection";
 
-const topStudyPartnerPromise = fetch("http://localhost:3000/studies").then(
+const topStudyPartnerPromise = fetch("https://study-partner-web-server.vercel.app/studies").then(
   (res) => res.json()
 );
 

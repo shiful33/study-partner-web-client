@@ -67,7 +67,7 @@ const Register = () => {
       };
 
       // create user in the database
-      await fetch("http://localhost:3000/users", {
+      await fetch("https://study-partner-web-server.vercel.app/users", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -108,7 +108,7 @@ const Register = () => {
         image: firebaseUser.photoURL,
       };
 
-      await fetch("http://localhost:3000/users", {
+      await fetch("https://study-partner-web-server.vercel.app/users", {
         method: "POST",
         headers: {
           "content-type": "application/json",

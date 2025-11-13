@@ -11,7 +11,8 @@ const UpdatePartnerError = () => {
           Partner Not Found
         </h2>
         <p className="mb-6 text-gray-600">
-          {error?.data || "The partner you're looking for doesn't exist or has been removed."}
+          {error?.data ||
+            "The partner you're looking for doesn't exist or has been removed."}
         </p>
         <Link
           to="/myConnection"

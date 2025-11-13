@@ -13,7 +13,7 @@ const Testimonials = () => {
     // Fetch from MongoDB
     const fetchTestimonials = async () => {
       try {
-        const res = await fetch("http://localhost:3000/testimonials");
+        const res = await fetch("https://study-partner-web-server.vercel.app/testimonials");
         if (!res.ok) throw new Error("Failed to load testimonials");
         const data = await res.json();
         setTestimonials(data);
@@ -64,7 +64,8 @@ const Testimonials = () => {
             What Students Are Saying
           </h2>
           <p className="max-w-2xl mx-auto text-lg text-gray-400 dark:text-gray-300">
-            Real stories from real students who found their <span className="text-yellow-500">perfect study buddy.</span>
+            Real stories from real students who found their{" "}
+            <span className="text-yellow-500">perfect study buddy.</span>
           </p>
         </div>
 
