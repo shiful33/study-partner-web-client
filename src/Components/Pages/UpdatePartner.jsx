@@ -7,10 +7,7 @@ const UpdatePartner = () => {
   const partner = useLoaderData();
   const navigate = useNavigate();
 
-  const [formData, setFormData] = useState({
-    ...partner,
-  });
-
+  const [formData, setFormData] = useState({ ...partner });
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
@@ -38,18 +35,15 @@ const UpdatePartner = () => {
         }
       );
 
-      if (!updateRes1.ok) {
-        const error1 = await updateRes1.json();
-        throw new Error(error1.message || "Failed to update findPartners");
+      if (!updateRes1.ok || !updateRes2.ok) {
+        throw new Error("Failed to update data.");
       }
 
-      if (!updateRes2.ok) {
-        const error2 = await updateRes2.json();
-        throw new Error(error2.message || "Failed to update myConnection");
-      }
+      window.dispatchEvent(new Event("partner-updated"));
 
       toast.success("Profile Update Successful!");
-      navigate("/myConnection");
+
+      navigate("/my-connection");
     } catch (error) {
       toast.error("Update failed: " + error.message);
     } finally {
@@ -57,9 +51,9 @@ const UpdatePartner = () => {
     }
   };
 
- 
- <LoadingSpinner center message="Loading Study Partner..." />
-  
+  if (!formData) {
+    return <LoadingSpinner center message="Loading Study Partner..." />;
+  }
 
   return (
     <div className="my-[80px]">

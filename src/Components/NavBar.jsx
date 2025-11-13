@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { AuthContext } from "../Context/AuthContext";
+
 import { toast } from "react-toastify";
 import { FaGraduationCap } from "react-icons/fa";
 import { FaPenClip } from "react-icons/fa6";
+import AuthContext from "../Context/AuthContext";
 
 const NavBar = () => {
   const { user, signOutUser } = useContext(AuthContext);

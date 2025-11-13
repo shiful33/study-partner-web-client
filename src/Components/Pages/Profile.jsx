@@ -8,7 +8,8 @@ import {
   EmailAuthProvider,
   reauthenticateWithCredential,
 } from "firebase/auth";
-import { AuthContext } from "../../Context/AuthContext";
+import AuthContext from "../../Context/AuthContext";
+
 
 const Profile = () => {
   const { user } = useContext(AuthContext);

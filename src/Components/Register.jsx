@@ -1,12 +1,13 @@
 import React, { useContext, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { AuthContext } from "../Context/AuthContext";
+
 import { Link, useNavigate } from "react-router-dom";
 import { updateProfile } from "firebase/auth";
 import { toast } from "react-toastify";
 import { FaEye } from "react-icons/fa";
 import { IoMdEyeOff } from "react-icons/io";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
+import AuthContext from "../Context/AuthContext";
 
 const Register = () => {
   const { createUser, signInWithGoogle, user, signOutUser } =
