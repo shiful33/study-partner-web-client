@@ -13,7 +13,7 @@ const SearchPartner = () => {
     <div>
       <section className="py-12dark:from-gray-800 dark:to-gray-900 mt-[80px]">
         <div className="max-w-4xl px-4 mx-auto text-center">
-          <h3 className="text-2xl font-bold text-[#001F46] light:text dark:text mb-6">
+          <h3 className="mb-6 text-2xl font-bold light:text dark:text">
             Find Your Partner in Seconds
           </h3>
           <div className="flex flex-col mx-auto lg:max-w-lg sm:flex-row">

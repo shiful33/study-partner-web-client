@@ -43,7 +43,7 @@ const UpdatePartner = () => {
 
       toast.success("Profile Update Successful!");
 
-      navigate("/my-connection");
+      navigate("/myConnection");
     } catch (error) {
       toast.error("Update failed: " + error.message);
     } finally {

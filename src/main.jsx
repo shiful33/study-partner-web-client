@@ -18,6 +18,7 @@ import FindPartners from "./Components/FindPartnerAll/FindPartners.jsx";
 import UpdatePartner from "./Components/Pages/UpdatePartner.jsx";
 import UpdatePartnerError from "./Components/ErrorPage/UpdatePartnerError.jsx";
 import DarkModeToggle from "./Components/UI/DarkModeToggle.jsx";
+import ErrorPage from "./Components/ErrorPage/ErrorPage.jsx";
 
 
 const router = createBrowserRouter([
@@ -72,6 +73,7 @@ const router = createBrowserRouter([
       },
       { path: "login", element: <Login /> },
       { path: "register", element: <Register /> },
+      { path: "*", element: <ErrorPage /> },
     ],
   },
 ]);
