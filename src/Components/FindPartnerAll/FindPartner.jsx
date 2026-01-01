@@ -8,7 +8,7 @@ const FindPartner = ({ partner }) => {
 
   return (
     <div className="">
-      <div className="p-8 transition bg-gray-100 shadow-1 lg border-1 hover:shadow-none border-amber-300 hover:border-none card card-side">
+      <div className="p-8 transition bg-gray-100 shadow-1 lg border-1 hover:shadow-none border-amber-100 hover:border-none card card-side">
         <figure>
           <img
             src={partner.profileimage}
@@ -17,7 +17,7 @@ const FindPartner = ({ partner }) => {
           />
         </figure>
         <div className="text-left card-body text-shadow-light">
-          <h2 className="card-title text-[#001F46] text-[24px]">
+          <h2 className="card-title text-gray-600 text-[20px] text-shadow-light">
             {partner.name}
           </h2>
 
@@ -45,7 +45,7 @@ const FindPartner = ({ partner }) => {
           <div className="justify-end card-actions">
             <Link
               to={`/partnerDetails/${_id}?from=findPartners`}
-              className="w-full text-white bg-yellow-400 hover:bg-yellow-200 btn text-shadow-light"
+              className="w-full text-gray-600 rounded-lg btn-outline hover:bg-white btn text-shadow-light"
             >
               View Profile
             </Link>

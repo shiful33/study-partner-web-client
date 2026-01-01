@@ -82,13 +82,13 @@ const PartnerDetails = () => {
               className="border-4 border-yellow-400 p-2 shadow-lg w-[300px] h-[300px] rounded-full object-cover"
               alt={partner.name}
             />
-            <h1 className="text-[32px] text-center font-bold dark:text light:text dark:text mt-6">
+            <h1 className="text-[24px] text-gray-600 text-center font-bold dark:text light:text dark:text mt-6">
               {partner.name}
             </h1>
           </div>
 
-          <div className="p-6 text-left border border-yellow-400 rounded-md shadow-md">
-            <h1 className="flex items-end text-[22px] font-bold  light:text dark:text dark:text-white">
+          <div className="p-6 text-left border border-yellow-200 rounded-md shadow-sm">
+            <h1 className="flex items-end text-[20px] font-bold text-gray-600 light:text dark:text dark:text-white">
               Name{" "}
               <CgBorderStyleSolid className="text-[18px] text-yellow-400" />{" "}
               {partner.name}
@@ -112,9 +112,9 @@ const PartnerDetails = () => {
               </span>
             </h4>
 
-            <div className="w-full mt-4 border border-yellow-200"></div>
+            <div className="w-full mt-4 border border-yellow-100"></div>
 
-            <div className="p-2 mt-4 shadow-md lg:w-[700px]">
+            <div className="p-2 mt-4 shadow-sm lg:w-[700px]">
               <h4 className="flex gap-1">
                 Study Mode:{" "}
                 <span className="text-green-500">{partner.studyMode}</span>
@@ -132,7 +132,7 @@ const PartnerDetails = () => {
             </div>
 
             <div>
-              <h3 className="flex items-end pt-6 mt-4 text-xl font-semibold light:text dark:text">
+              <h3 className="flex items-end pt-6 mt-4 text-xl font-semibold text-gray-600 light:text dark:text">
                 Contact Info{" "}
                 <CgBorderStyleSolid className="text-[18px] text-yellow-400" />
               </h3>

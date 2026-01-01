@@ -57,7 +57,7 @@ const FindPartnersData = ({ findPartnerPromise }) => {
     <div className="my-[80px]">
       <h2 className="flex justify-center items-center gap-3 text-[26px] font-semibold dark:light dark:text mb-[80px]">
         Find Study Partner{" "}
-        <FaUserGraduate className="text-yellow-500 text-[40px]" />
+        <FaUserGraduate className="text-yellow-500 text-[40px] animate-pulse" />
       </h2>
 
       {/* Search & Sort Section */}
