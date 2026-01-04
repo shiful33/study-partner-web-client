@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { FaGraduationCap } from "react-icons/fa";
 import { FaPenClip } from "react-icons/fa6";
 import AuthContext from "../Context/AuthContext";
+import { Menu } from "lucide-react";
 
 const NavBar = () => {
   const { user, signOutUser } = useContext(AuthContext);
@@ -112,13 +113,25 @@ const NavBar = () => {
   return (
     <div className="sticky top-0 z-50">
       <div className={navbarClasses}>
-        <div className="navbar-start lg:pl-[40px]">
+        <div className="navbar-start lg:pl-8">
           <div className="dropdown">
-            <div
-              tabIndex={0}
-              role="button"
-              className="mr-4 bg-gray-800 btn lg:hidden"
-            ></div>
+            <div className="dropdown">
+          <div
+            tabIndex={0}
+            role="button"
+            className="flex items-center justify-center p-2 mr-4 bg-gray-100 border border-gray-300 btn btn-ghost lg:hidden"
+            aria-label="Toggle Menu"
+          >
+            {/* Menu Icon added here */}
+            <Menu className="h-6 w-6 text-[#001F46]" />
+          </div>
+          <ul
+            tabIndex={0}
+            className="p-4 mt-3 bg-white shadow-xl menu menu-sm dropdown-content rounded-2xl z-[50] w-64 border border-gray-100 space-y-2"
+          >
+            {links}
+          </ul>
+        </div>
             <ul
               tabIndex="-1"
               className="p-2 mt-3 bg-white shadow menu menu-sm dropdown-content rounded-box z-1 w-52"
@@ -126,7 +139,7 @@ const NavBar = () => {
               {links}
             </ul>
           </div>
-          <span className="flex logo-text items-center gap-2 text-yellow-400 text-[22px] lg:text-[30px]  text-shadow-light">
+          <span className="flex logo-text items-center gap-2 text-yellow-400 text-[22px] lg:text-[30px] text-shadow-light">
             <FaGraduationCap className="text-[45px] lg:text-[70px] light:text dark:text text-shadow-light" />
             STUDYmate
           </span>
@@ -136,7 +149,7 @@ const NavBar = () => {
           <ul className="px-1 menu menu-horizontal">{links}</ul>
         </div>
         {/* User Image show with login */}
-        <div className="flex gap-4 navbar-end lg:pr-[40px]">
+        <div className="flex gap-4 navbar-end lg:pr-8">
           {user ? (
             <div className="flex items-center space-x-3">
               <div className="dropdown dropdown-end">
