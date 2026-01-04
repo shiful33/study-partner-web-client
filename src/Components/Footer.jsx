@@ -1,10 +1,11 @@
 import { FaGraduationCap } from "react-icons/fa";
 import { FaPenClip } from "react-icons/fa6";
+import { Link } from "react-router";
 
 const Footer = () => {
   return (
     <div>
-      <footer className="footer sm:footer-horizontal bg-[#001F46] p-10 px-20 flex justify-between">
+      <footer className="footer sm:footer-horizontal bg-[#001F46] p-10 px-20 md:flex justify-between">
         <nav>
           <h6 className="text-white footer-title">Services</h6>
           <a className="text-white link link-hover hover:text-yellow-400">
@@ -37,15 +38,15 @@ const Footer = () => {
         </nav>
         <nav>
           <h6 className="text-white footer-title">Legal</h6>
-          <a className="text-white link link-hover hover:text-yellow-400">
+          <Link to={"/termsOfUse"} className="text-white link link-hover hover:text-yellow-400">
             Terms of use
-          </a>
-          <a className="text-white link link-hover hover:text-yellow-400">
+          </Link>
+          <Link to={"/privacyPolicy"} className="text-white link link-hover hover:text-yellow-400">
             Privacy policy
-          </a>
-          <a className="text-white link link-hover hover:text-yellow-400">
+          </Link>
+          <Link to={"/cookiePolicy"} className="text-white link link-hover hover:text-yellow-400">
             Cookie policy
-          </a>
+          </Link>
         </nav>
         <nav className="md:place-self-center md:justify-self-end">
           <div className="grid grid-flow-col gap-4">

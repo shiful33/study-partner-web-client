@@ -5,6 +5,7 @@ import Footer from "../Footer";
 import HeroSlider from "../HeroSlider";
 import FeatureCards from "../FeatureCard";
 import Chatbot from "../Chatbot";
+import ScrollToTop from "../ScrollToTop";
 
 const RootLayout = () => {
   const location = useLocation();
@@ -24,6 +25,7 @@ const RootLayout = () => {
         <Chatbot />
       </main>
       <Footer />
+      <ScrollToTop />
     </div>
   );
 };

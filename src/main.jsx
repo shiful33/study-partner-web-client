@@ -19,6 +19,9 @@ import UpdatePartner from "./Components/Pages/UpdatePartner.jsx";
 import UpdatePartnerError from "./Components/ErrorPage/UpdatePartnerError.jsx";
 import DarkModeToggle from "./Components/UI/DarkModeToggle.jsx";
 import ErrorPage from "./Components/ErrorPage/ErrorPage.jsx";
+import TermsOfUse from "./Components/Pages/policyPage/TermsOfUse.jsx";
+import PrivacyPolicy from "./Components/Pages/policyPage/PrivacyPolicy.jsx";
+import CookiePolicy from "./Components/Pages/policyPage/CookiePolicy.jsx";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +43,18 @@ const router = createBrowserRouter([
       {
         path: "myConnection",
         element: <MyConnection />,
+      },
+      {
+        path: "termsOfUse",
+        element: <TermsOfUse />,
+      },
+      {
+        path: "privacyPolicy",
+        element: <PrivacyPolicy />,
+      },
+      {
+        path: "cookiePolicy",
+        element: <CookiePolicy />,
       },
       {
         path: "update-partner/:id",
