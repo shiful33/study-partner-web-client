@@ -22,6 +22,14 @@ import ErrorPage from "./Components/ErrorPage/ErrorPage.jsx";
 import TermsOfUse from "./Components/Pages/policyPage/TermsOfUse.jsx";
 import PrivacyPolicy from "./Components/Pages/policyPage/PrivacyPolicy.jsx";
 import CookiePolicy from "./Components/Pages/policyPage/CookiePolicy.jsx";
+import AboutUs from "./Components/Pages/company/AboutUs.jsx";
+import Contact from "./Components/Pages/company/Contact.jsx";
+import Jobs from "./Components/Pages/company/Jobs.jsx";
+import PressKit from "./Components/Pages/company/PressKit.jsx";
+import Branding from "./Components/Pages/services/Branding.jsx";
+import Design from "./Components/Pages/services/Design.jsx";
+import Marketing from "./Components/Pages/services/Marketing.jsx";
+import Advertisement from "./Components/Pages/services/Advertisement.jsx";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +51,38 @@ const router = createBrowserRouter([
       {
         path: "myConnection",
         element: <MyConnection />,
+      },
+      {
+        path: "branding",
+        element: <Branding />,
+      },
+      {
+        path: "design",
+        element: <Design />,
+      },
+      {
+        path: "marketing",
+        element: <Marketing />,
+      },
+      {
+        path: "advertisement",
+        element: <Advertisement />,
+      },
+      {
+        path: "aboutUs",
+        element: <AboutUs />,
+      },
+      {
+        path: "contact",
+        element: <Contact />,
+      },
+      {
+        path: "jobs",
+        element: <Jobs />,
+      },
+      {
+        path: "pressKit",
+        element: <PressKit />,
       },
       {
         path: "termsOfUse",

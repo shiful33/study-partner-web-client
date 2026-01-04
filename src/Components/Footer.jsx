@@ -8,33 +8,33 @@ const Footer = () => {
       <footer className="footer sm:footer-horizontal bg-[#001F46] p-10 px-20 md:flex justify-between">
         <nav>
           <h6 className="text-white footer-title">Services</h6>
-          <a className="text-white link link-hover hover:text-yellow-400">
+          <Link to={"/branding"} className="text-white link link-hover hover:text-yellow-400">
             Branding
-          </a>
-          <a className="text-white link link-hover hover:text-yellow-400">
+          </Link>
+          <Link to={"/design"} className="text-white link link-hover hover:text-yellow-400">
             Design
-          </a>
-          <a className="text-white link link-hover hover:text-yellow-400">
+          </Link>
+          <Link to={"/marketing"} className="text-white link link-hover hover:text-yellow-400">
             Marketing
-          </a>
-          <a className="text-white link link-hover hover:text-yellow-400">
+          </Link>
+          <Link to={"/advertisement"} className="text-white link link-hover hover:text-yellow-400">
             Advertisement
-          </a>
+          </Link>
         </nav>
         <nav>
           <h6 className="text-white footer-title">Company</h6>
-          <a className="text-white link link-hover hover:text-yellow-400">
+          <Link to={"/aboutUs"} className="text-white link link-hover hover:text-yellow-400">
             About us
-          </a>
-          <a className="text-white link link-hover hover:text-yellow-400">
+          </Link>
+          <Link to={"/contact"} className="text-white link link-hover hover:text-yellow-400">
             Contact
-          </a>
-          <a className="text-white link link-hover hover:text-yellow-400">
+          </Link>
+          <Link to={"/jobs"} className="text-white link link-hover hover:text-yellow-400">
             Jobs
-          </a>
-          <a className="text-white link link-hover hover:text-yellow-400">
+          </Link>
+          <Link to={"/pressKit"} className="text-white link link-hover hover:text-yellow-400">
             Press kit
-          </a>
+          </Link>
         </nav>
         <nav>
           <h6 className="text-white footer-title">Legal</h6>
