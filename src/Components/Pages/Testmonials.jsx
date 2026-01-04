@@ -60,10 +60,10 @@ const Testimonials = () => {
     <section className="py-20 overflow-hidden md:py-28dark:from-gray-800 dark:to-gray-900">
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div className="mb-16 text-center" data-aos="fade-up">
-          <h2 className="mb-4 text-3xl text-4xl font-bold light:text dark:text">
+          <h2 className="mb-4 text-[22px] font-bold md:text-[26px] light:text dark:text">
             What Students Are Saying
           </h2>
-          <p className="max-w-2xl mx-auto text-lg text-gray-400 dark:text-gray-300">
+          <p className="max-w-2xl mx-auto text-gray-400 text-md dark:text-gray-300">
             Real stories from real students who found their{" "}
             <span className="text-yellow-500">perfect study buddy.</span>
           </p>

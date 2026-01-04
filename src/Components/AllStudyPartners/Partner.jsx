@@ -6,7 +6,7 @@ const Partner = ({ partner }) => {
 
   return (
     <div>
-      <div className="p-4 transition border-b shadow-lg hover:shadow-none border-amber-400 hover:border-none bg-yellow-50 card card-side">
+      <div className="p-4 transition border-b shadow-sm hover:shadow-none border-amber-200 hover:border-none bg-base-200 card card-side">
         <figure>
           <img
             src={partner.profileimage}
@@ -43,7 +43,7 @@ const Partner = ({ partner }) => {
           <div className="justify-end card-actions">
             <Link
               to={`/partnerDetails/${_id}?from=studies`}
-              className="w-full text-white bg-yellow-400 hover:bg-yellow-200 btn text-shadow-light"
+              className="w-full text-gray-600 btn-outline hover:bg-white btn text-shadow-light"
             >
               View Profile
             </Link>

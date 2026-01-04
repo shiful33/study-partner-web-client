@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { GrWorkshop } from "react-icons/gr";
 
 const HowItWorks = () => {
   useEffect(() => {
@@ -12,12 +13,12 @@ const HowItWorks = () => {
     <section className="py-16 transition-colors duration-300 md:py-24 dark:from-gray-900 dark:to-gray-800">
       <div className="px-4 mx-auto text-center max-w-7xl sm:px-6 lg:px-8">
         {/* Headline */}
-        <h2 className="mb-4 text-3xl font-bold md:text-4xl dark:text light-text text-shadow-light">
-          How It Works
+        <h2 className="mb-6 text-[22px] font-bold md:text-[26px] dark:text light-text text-shadow-light flex items-center justify-center gap-4">
+          How It Works <GrWorkshop  className="text-[45px] dark:text light:text text-yellow-500 text-shadow-light animate-pulse"/>
         </h2>
-        <p className="max-w-3xl mx-auto mb-12 text-lg text-gray-400 md:text-xl dark:text-gray-300">
+        <p className="max-w-3xl mx-auto mb-16 text-md gray-400 text- md:text-xl dark:text-gray-300">
           Find your perfect study partner in just{" "}
-          <span className="font-bold text-yellow-500">3 simple steps</span>.
+          <span className="font-bold text-yellow-500">3 simple steps.</span>
         </p>
 
         {/* Steps Grid */}
@@ -26,7 +27,7 @@ const HowItWorks = () => {
           <div
             data-aos="fade-up"
             data-aos-delay="100"
-            className="relative p-8 transition-all duration-300 bg-white border border-gray-100 shadow-lg group dark:bg-gray-800 rounded-2xl hover:shadow-2xl dark:border-gray-700 hover:border-yellow-400 dark:hover:border-yellow-500"
+            className="relative p-8 transition-all duration-300 bg-white border border-gray-100 shadow-md group dark:bg-gray-800 rounded-2xl hover:shadow-xl dark:border-gray-700 hover:border-yellow-400 dark:hover:border-yellow-500"
           >
             <div className="absolute transform -translate-x-1/2 -top-6 left-1/2">
               <div className="w-14 h-14 bg-yellow-400 dark:bg-yellow-500 text-[#001F46] dark:text-gray-900 rounded-full flex items-center justify-center text-2xl font-bold shadow-xl group-hover:scale-110 transition-transform duration-300">
@@ -85,7 +86,7 @@ const HowItWorks = () => {
           <div
             data-aos="fade-up"
             data-aos-delay="300"
-            className="relative p-8 transition-all duration-300 bg-white border border-gray-100 shadow-lg group dark:bg-gray-800 rounded-2xl hover:shadow-2xl dark:border-gray-700 hover:border-yellow-400 dark:hover:border-yellow-500 md:mt-8"
+            className="relative p-8 transition-all duration-300 bg-white border border-gray-100 shadow-md group dark:bg-gray-800 rounded-2xl hover:shadow-xl dark:border-gray-700 hover:border-yellow-400 dark:hover:border-yellow-500 md:mt-8"
           >
             <div className="absolute transform -translate-x-1/2 -top-6 left-1/2">
               <div className="w-14 h-14 bg-yellow-400 dark:bg-yellow-500 text-[#001F46] dark:text-gray-900 rounded-full flex items-center justify-center text-2xl font-bold shadow-xl group-hover:scale-110 transition-transform duration-300">
@@ -145,7 +146,7 @@ const HowItWorks = () => {
           <div
             data-aos="fade-up"
             data-aos-delay="500"
-            className="relative p-8 transition-all duration-300 bg-white border border-gray-100 shadow-lg group dark:bg-gray-800 rounded-2xl hover:shadow-2xl dark:border-gray-700 hover:border-yellow-400 dark:hover:border-yellow-500"
+            className="relative p-8 transition-all duration-300 bg-white border border-gray-100 shadow-md group dark:bg-gray-800 rounded-2xl hover:shadow-xl dark:border-gray-700 hover:border-yellow-400 dark:hover:border-yellow-500"
           >
             <div className="absolute transform -translate-x-1/2 -top-6 left-1/2">
               <div className="w-14 h-14 bg-yellow-400 dark:bg-yellow-500 text-[#001F46] dark:text-gray-900 rounded-full flex items-center justify-center text-2xl font-bold shadow-xl group-hover:scale-110 transition-transform duration-300">

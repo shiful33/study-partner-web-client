@@ -8,6 +8,9 @@ import { FaEye } from "react-icons/fa";
 import { IoMdEyeOff } from "react-icons/io";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import AuthContext from "../Context/AuthContext";
+import { FaUserEdit } from "react-icons/fa";
+import { GiLoveMystery } from "react-icons/gi";
+import { RiCollageFill } from "react-icons/ri";
 
 const Register = () => {
   const { createUser, signInWithGoogle, user, signOutUser } =
@@ -129,9 +132,9 @@ const Register = () => {
     <div>
       <form
         onSubmit={handleRegister}
-        className="w-full md:max-w-md lg:max-w-lg mx-auto shadow-2xl card bg-base-100 shrink-0 my-[80px]"
+        className="w-full mx-auto mt-20 mb-10 shadow-lg md:max-w-md lg:max-w-lg card bg-base-100 shrink-0"
       >
-        <h1 className="text-4xl font-bold text-[#001F46] text-shadow-light mt-6 text-center">
+        <h1 className="text-2xl font-bold text-[#001F46] text-shadow-light mt-6 text-center">
           Register now!
         </h1>
         <div className="card-body">
@@ -143,7 +146,7 @@ const Register = () => {
             <input
               type="text"
               name="name"
-              className="input lg:w-[465px]"
+              className="w-full input"
               placeholder="Name"
               required
             />
@@ -155,7 +158,7 @@ const Register = () => {
             <input
               type="email"
               name="email"
-              className="input lg:w-[465px]"
+              className="w-full input"
               placeholder="Email"
               required
             />
@@ -167,7 +170,7 @@ const Register = () => {
             <input
               type="text"
               name="photo"
-              className="input lg:w-[465px]"
+              className="w-full input"
               placeholder="Photo URL"
               required
             />
@@ -181,22 +184,22 @@ const Register = () => {
               <input
                 type={show ? "text" : "password"}
                 name="password"
-                className="input lg:w-[465px]"
+                className="w-full input"
                 placeholder="**********"
                 required
               />
 
               <span
                 onClick={() => setShow(!show)}
-                className="absolute text-[16px] right-8 top-9 cursor-pointer"
+                className="absolute text-[18px] right-6 top-9 cursor-pointer text-gray-600"
               >
-                {show ? <FaEye /> : <IoMdEyeOff />}
+                {show ? <FaEye size={20} /> : <IoMdEyeOff size={20} />}
               </span>
             </div>
 
             <button
               type="submit"
-              className="mt-4 btn bg-[#001F46] text-white text-[18px]"
+              className="mt-4 btn bg-[#001F46] text-white text-[18px] text-normal"
               disabled={loading}
             >
               {loading ? "Processing..." : "Register"}
@@ -205,7 +208,7 @@ const Register = () => {
             <button
               onClick={handleGoogleSignIn}
               type="button"
-              className="mt-4 btn btn-outline bg-transparent text-[#001F46] bg-[#001F46]"
+              className="mt-4 btn btn-outline bg-transparent text-[#001F46]"
               disabled={loading}
             >
               <FcGoogle className="text-[20px]" /> Register With Google
@@ -213,13 +216,22 @@ const Register = () => {
 
             <Link to="/login" className="mt-4 font-semibold text-center">
               Already have an account? Please{" "}
-              <span className="font-semibold text-[17px] text-yellow-500 cursor-pointer hover:underline">
+              <span className="font-medium text-yellow-500 hover:underline text-[16px]">
                 LogIn
               </span>
             </Link>
           </fieldset>
         </div>
       </form>
+
+      <div className="text-center">
+              <h2 className="mb-4 dark:light dark:text">JOIN OTHERS REQUIRE AS A</h2>
+              <div className="flex justify-center gap-4 mb-16">
+              <button className="btn btn-outline  dark:light dark:text text-[17px]"><FaUserEdit className="text-yellow-500 text-[22px]" />Student</button>
+              <button className="btn btn-outline  dark:light dark:text text-[17px]"><GiLoveMystery className="text-yellow-500 text-[22px]" /> Donor</button>
+              <button className="btn btn-outline  dark:light dark:text text-[17px]"><RiCollageFill className="text-yellow-500 text-[22px]" /> Institution</button>
+              </div>
+            </div>
     </div>
   );
 };

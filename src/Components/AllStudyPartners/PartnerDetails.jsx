@@ -75,20 +75,20 @@ const PartnerDetails = () => {
   return (
     <div>
       <div className="min-h-screen hero">
-        <div className="flex-col justify-center lg:gap-20 hero-content lg:flex-row h-[380px]">
-          <div>
+        <div className="flex-col justify-center lg:gap-20 hero-content md:flex-row">
+          <div className="md:w-[50%] lg:w-[30%]">
             <img
               src={partner.profileimage}
               className="border-4 border-yellow-400 p-2 shadow-lg w-[300px] h-[300px] rounded-full object-cover"
               alt={partner.name}
             />
-            <h1 className="text-[24px] text-gray-600 text-center font-bold dark:text light:text dark:text mt-6">
+            <h1 className="text-[24px] text-center font-bold dark:text light:text dark:text mt-6">
               {partner.name}
             </h1>
           </div>
 
-          <div className="p-6 text-left border border-yellow-200 rounded-md shadow-sm">
-            <h1 className="flex items-end text-[20px] font-bold text-gray-600 light:text dark:text dark:text-white">
+          <div className="p-6 text-left border border-yellow-200 rounded-md shadow-sm md:w-[50%] lg:w-[70%]">
+            <h1 className="flex items-end text-[20px] font-bold light:text dark:text dark:text-white">
               Name{" "}
               <CgBorderStyleSolid className="text-[18px] text-yellow-400" />{" "}
               {partner.name}
@@ -132,7 +132,7 @@ const PartnerDetails = () => {
             </div>
 
             <div>
-              <h3 className="flex items-end pt-6 mt-4 text-xl font-semibold text-gray-600 light:text dark:text">
+              <h3 className="flex items-end pt-6 mt-4 text-xl font-semiboldlight:text dark:text">
                 Contact Info{" "}
                 <CgBorderStyleSolid className="text-[18px] text-yellow-400" />
               </h3>
@@ -150,11 +150,11 @@ const PartnerDetails = () => {
               </h4>
             </div>
 
-            <div className="flex gap-4">
+            <div className="grid gap-4 lg:flex">
               <button
                 onClick={handleStudyRequest}
                 disabled={loading || requestSent}
-                className={`w-[50%] btn mt-6 text-white font-bold transition-all ${
+                className={`lg:w-[50%] btn mt-6 text-white font-bold transition-all ${
                   requestSent
                     ? "bg-green-500 hover:bg-green-600"
                     : "bg-yellow-400 hover:bg-yellow-500"
@@ -170,7 +170,7 @@ const PartnerDetails = () => {
               <button
                 onClick={() => setShowMessageModal(true)}
                 disabled={loading || requestSent}
-                className="w-[50%] btn mt-6 bg-blue-500 hover:bg-blue-600 text-white font-bold"
+                className="lg:w-[50%] btn mt-6 bg-blue-500 hover:bg-blue-600 text-white font-bold"
               >
                 Send Partner Message
               </button>

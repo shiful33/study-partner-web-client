@@ -86,7 +86,7 @@ const Footer = () => {
         </nav>
       </footer>
       <footer className="footer bg-[#001F46] text-yellow-100 border-gray-600 border-t px-20 py-4">
-        <aside className="flex items-center justify-center">
+        <aside className="items-center justify-center lg:flex">
           <div>
             <div className="flex items-center justify-left">
               <span className="flex logo-text items-center gap-2 text-yellow-400 text-[30px]  text-shadow-light">
@@ -104,7 +104,7 @@ const Footer = () => {
             </div>
           </div>
           <div>
-            <p className="ml-40 text-gray-400">
+            <p className="text-gray-400 lg:ml-90 ">
               Copyright © {new Date().getFullYear()} - All right reserved by |
               Shiful Islam
             </p>
